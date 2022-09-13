@@ -33,20 +33,9 @@ content:
     postcode: '53706'
     country: United States
     country_code: US
-<!--   directions: Enter Building 1 and take the stairs to Office 200 on Floor 2 -->
-<!--   office_hours:
-    - 'Monday 10:00 to 13:00'
-    - 'Wednesday 09:00 to 10:00'
-  appointment_url: 'https://calendly.com'
-  contact_links:
-    - icon: twitter
-      icon_pack: fab
-      name: DM Me
-      link: 'https://twitter.com/Twitter'
-    - icon: video
-      icon_pack: fas
-      name: Zoom Me
-      link: 'https://zoom.com' -->
+    latitude: '43.0738'
+    longitude: '-89.4074'
+  directions: B248 Medical Sciences Center
 
 design:
   columns: '2'
