@@ -46,4 +46,6 @@ I am a second-year PhD student in Statistics at University of Wisconsin-Madison.
 
 Before becoming a student in statistics & mathematics, I was an undergraduate major in physics and minor in economics. At that time, I obtained experience as a quantitative researcher (intern) in financial data analysis, and gradualy found my interest in applying and developing mathematical tools in the real-world problems.
 
+News: Now I am learning causal inference in STAT 888 instructed by Professor Amy Cochran at UW-Madison! I am interested in causal inference because as a statistics student, what I have learned is mainly how to construct probability model and specify associations. However, the desire to develop associations to solving concrete problem requires me to know more about causal inference.
+
 <!-- {{< icon name="download" pack="fas" >}} Download my {{< staticref "uploads/demo_resume.pdf" "newtab" >}}resumé{{< /staticref >}}. -->
