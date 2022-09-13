@@ -1,6 +1,6 @@
 ---
 # Display name
-title: Shuchen Yan 12222
+title: Shuchen Yan
 
 # Is this the primary user of the site?
 superuser: true
@@ -43,7 +43,7 @@ education:
 # For available icons, see: https://wowchemy.com/docs/getting-started/page-builder/#icons
 #   For an email link, use "fas" icon pack, "envelope" icon, and a link in the
 #   form "mailto:your-email@example.com" or "/#contact" for contact widget.
-social:
+<!-- social:
   - icon: envelope
     icon_pack: fas
     link: '/#contact'
@@ -58,7 +58,7 @@ social:
     link: https://github.com/gcushen
   - icon: linkedin
     icon_pack: fab
-    link: https://www.linkedin.com/
+    link: https://www.linkedin.com/ -->
 
 # Link to a PDF of your resume/CV.
 # To use: copy your resume to `static/uploads/resume.pdf`, enable `ai` icons in `params.toml`,
