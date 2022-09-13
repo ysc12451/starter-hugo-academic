@@ -25,20 +25,16 @@ content:
       captcha: false
 
   # Contact details (edit or remove options as required)
-  email: test@example.org
-  phone: 888 888 88 88
+  email: syan58@wisc.edu
   address:
-    street: 450 Serra Mall
-    city: Stanford
-    region: CA
-    postcode: '94305'
+    street: 1300 University Avenue
+    city: Madison
+    region: WI
+    postcode: '53706'
     country: United States
     country_code: US
-  coordinates:
-    latitude: '37.4275'
-    longitude: '-122.1697'
-  directions: Enter Building 1 and take the stairs to Office 200 on Floor 2
-  office_hours:
+<!--   directions: Enter Building 1 and take the stairs to Office 200 on Floor 2 -->
+<!--   office_hours:
     - 'Monday 10:00 to 13:00'
     - 'Wednesday 09:00 to 10:00'
   appointment_url: 'https://calendly.com'
@@ -50,7 +46,7 @@ content:
     - icon: video
       icon_pack: fas
       name: Zoom Me
-      link: 'https://zoom.com'
+      link: 'https://zoom.com' -->
 
 design:
   columns: '2'
