@@ -68,14 +68,12 @@ social:
 #   link: uploads/resume.pdf
 
 # Enter email to display Gravatar (if Gravatar enabled in Config)
-email: ''
+email: 'syan58@wisc.edu'
 
 # Highlight the author in author lists? (true/false)
 highlight_name: true
 ---
 
-Nelson Bighetti is a professor of artificial intelligence at the Stanford AI Lab. His research interests include distributed robotics, mobile computing and programmable matter. He leads the Robotic Neurobiology group, which develops self-reconfiguring robots, systems of self-organizing robots, and mobile sensor networks.
-
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed neque elit, tristique placerat feugiat ac, facilisis vitae arcu. Proin eget egestas augue. Praesent ut sem nec arcu pellentesque aliquet. Duis dapibus diam vel metus tempus vulputate.
+I am a second-year PhD student in Statistics at University of Wisconsin-Madison. After passing the qualification exam, I am actively exploring towards high-dimensional statistics, machine learning and other modern topics with their applications in data analysis. Before becoming a student in statistics & mathematics, I was an undergraduate major in physics and minor in economics. At that time, I obtained experience as a quantitative researcher (intern) in financial data analysis, and gradualy found my interest in applying and developing mathematical tools in the real-world problems.
 
 {{< icon name="download" pack="fas" >}} Download my {{< staticref "uploads/demo_resume.pdf" "newtab" >}}resumé{{< /staticref >}}.
