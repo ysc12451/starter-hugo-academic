@@ -14,7 +14,7 @@ organizations:
     url: https://www.wisc.edu/
 
 # Short bio (displayed in user profile at end of posts)
-bio: I am a second-year PhD student in Statistics at University of Wisconsin-Madison. After passing the qualification exam, I am actively exploring towards high-dimensional statistics, machine learning and other modern topics with their applications in data analysis. Before becoming a student in statistics & mathematics, I was an undergraduate major in physics and minor in economics. At that time, I obtained experience as a quantitative researcher (intern) in financial data analysis, and gradualy found my interest in applying and developing mathematical tools in the real-world problems.
+bio: PhD student in Statistics at University of Wisconsin-Madison
 
 # Interests to show in About widget
 interests:
@@ -60,12 +60,12 @@ education:
     icon_pack: fab
     link: https://www.linkedin.com/ -->
 
-# Link to a PDF of your resume/CV.
+<!-- # Link to a PDF of your resume/CV.
 # To use: copy your resume to `static/uploads/resume.pdf`, enable `ai` icons in `params.toml`,
 # and uncomment the lines below.
 # - icon: cv
 #   icon_pack: ai
-#   link: uploads/resume.pdf
+#   link: uploads/resume.pdf -->
 
 # Enter email to display Gravatar (if Gravatar enabled in Config)
 email: 'syan58@wisc.edu'
@@ -74,6 +74,8 @@ email: 'syan58@wisc.edu'
 highlight_name: true
 ---
 
-I am a second-year PhD student in Statistics at University of Wisconsin-Madison. After passing the qualification exam, I am actively exploring towards high-dimensional statistics, machine learning and other modern topics with their applications in data analysis. Before becoming a student in statistics & mathematics, I was an undergraduate major in physics and minor in economics. At that time, I obtained experience as a quantitative researcher (intern) in financial data analysis, and gradualy found my interest in applying and developing mathematical tools in the real-world problems.
+I am a second-year PhD student in Statistics at University of Wisconsin-Madison. After passing the qualification exam, I am actively exploring towards high-dimensional statistics, machine learning and other modern topics with their applications in data analysis. 
+
+Before becoming a student in statistics & mathematics, I was an undergraduate major in physics and minor in economics. At that time, I obtained experience as a quantitative researcher (intern) in financial data analysis, and gradualy found my interest in applying and developing mathematical tools in the real-world problems.
 
 {{< icon name="download" pack="fas" >}} Download my {{< staticref "uploads/demo_resume.pdf" "newtab" >}}resumé{{< /staticref >}}.
