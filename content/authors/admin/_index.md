@@ -1,20 +1,22 @@
 ---
 # Display name
-title: Nelson Bighetti
+title: Shuchen Yan
 
 # Is this the primary user of the site?
 superuser: true
 
 # Role/position/tagline
-role: Professor of Artificial Intelligence
+role: PhD student in Statistics
 
 # Organizations/Affiliations to show in About widget
 organizations:
-  - name: Stanford University
-    url: https://www.stanford.edu/
+  - name: University of Wisconsin - Madison
+    url: https://www.wisc.edu/
 
 # Short bio (displayed in user profile at end of posts)
-bio: My research interests include distributed robotics, mobile computing and programmable matter.
+bio: I am a second-year PhD student in Statistics at University of Wisconsin-Madison. After passing the qualification exam, I am actively exploring towards high-dimensional statistics, machine learning and other modern topics with their applications in data analysis.
+
+Before becoming a student in statistics and mathematics, I was an undergraduate major in physics and minor in economics. At that time, I obtained some work experience  as a quantitative researcher (intern) in financial data analysis, and gradualy found my interest in applying and developing mathematical tools in the real-world problems.
 
 # Interests to show in About widget
 interests:
