@@ -34,7 +34,7 @@ education:
     - course: BSc in Physics
       institution: Peking University
       year: 2015-2019
-    - course: BSc in Economics (minor)
+    - course: Bachelor of Economics (minor)
       institution: Peking University
       year: 2015-2019
       
