@@ -38,10 +38,7 @@ education:
       institution: Peking University
       year: 2015-2019
       
-<!-- # Enter email to display Gravatar (if Gravatar enabled in Config) -->
 email: 'syan58@wisc.edu'
-
-<!-- # Highlight the author in author lists? (true/false) -->
 highlight_name: true
 ---
 
