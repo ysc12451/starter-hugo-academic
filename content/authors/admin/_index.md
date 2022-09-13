@@ -39,10 +39,10 @@ education:
       year: 2015-2019
       
 
-# Social/Academic Networking
+<!-- # Social/Academic Networking
 # For available icons, see: https://wowchemy.com/docs/getting-started/page-builder/#icons
 #   For an email link, use "fas" icon pack, "envelope" icon, and a link in the
-#   form "mailto:your-email@example.com" or "/#contact" for contact widget.
+#   form "mailto:your-email@example.com" or "/#contact" for contact widget. -->
 <!-- social:
   - icon: envelope
     icon_pack: fas
@@ -67,10 +67,10 @@ education:
 #   icon_pack: ai
 #   link: uploads/resume.pdf -->
 
-# Enter email to display Gravatar (if Gravatar enabled in Config)
+<!-- # Enter email to display Gravatar (if Gravatar enabled in Config) -->
 email: 'syan58@wisc.edu'
 
-# Highlight the author in author lists? (true/false)
+<!-- # Highlight the author in author lists? (true/false) -->
 highlight_name: true
 ---
 
