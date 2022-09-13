@@ -46,4 +46,4 @@ I am a second-year PhD student in Statistics at University of Wisconsin-Madison.
 
 Before becoming a student in statistics & mathematics, I was an undergraduate major in physics and minor in economics. At that time, I obtained experience as a quantitative researcher (intern) in financial data analysis, and gradualy found my interest in applying and developing mathematical tools in the real-world problems.
 
-{{< icon name="download" pack="fas" >}} Download my {{< staticref "uploads/demo_resume.pdf" "newtab" >}}resumé{{< /staticref >}}.
+<!-- {{< icon name="download" pack="fas" >}} Download my {{< staticref "uploads/demo_resume.pdf" "newtab" >}}resumé{{< /staticref >}}. -->
