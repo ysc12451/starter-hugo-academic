@@ -1,7 +1,7 @@
 ---
-title: Courses
-summary: Learning materials for some courses and exams.
-date: "5/31/2022"
+title: STAT 888
+summary: STAT 888 project
+date: "10/5/2022"
 
 reading_time: false  # Show estimated reading time?
 share: false  # Show social sharing links?
