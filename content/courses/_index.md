@@ -20,3 +20,5 @@ One the one hand, some studies on modern learning methods have been done to mode
 In this course project, I would like to study the interaction between causal inference that I learned in class and learning methods. I will try to understand how they can work together for dynamic treatment.
 
 Random variables needed here may vary for different applications. They can be healthcare treatments and clinical outcomes along time, or promotional offers and final purchases in digital market problems. The causal effect may be average effect as function of random variables, including potential outcomes, from the set of random variables mentioned above. The hypotheses about the relationship between variables may be described in DAG, like in Yangyi Le et al. (2022):
+
+![hw2](featured.png)
