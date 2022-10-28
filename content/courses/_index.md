@@ -65,9 +65,11 @@ $$p(Y_t(\overline{A}_{m−1}, \underline{g}_m)|H_m), t ≥ m$$
 
 To estimate the expectation and distribution of counterfactual patient outcome, we need three assumptions [(Li et al., 2021)](#1):
 
-1. Consistency: $\overline{Y}_K(A_K) = \overline{Y}_K$
-2. Sequential Exchangeability: $Y_t(g) \upmodels A_t|H_t, \all t$
-3. Positivity: P(At = gt(Ht)) > 0 ∀{Ht : P(Ht) > 0}
+1. Consistency: $\overline{Y}_K(A_K) = \overline{Y}_K$. This means the observed outcome is equal to the counterfactual outcome corresponding to the observed treatment
+2. Sequential Exchangeability: $\underline{Y}_t(g) \prep\!\!\!\perp A_t|H_t, \forall t$. This means all confounding are observed. This would hold, e.g., if all drivers of treatment decisions that were prognostic for the outcome were observed.
+3. Positivity: $P(A_t = g_t(H_t)) > 0 ∀\{H_t:P(H_t) > 0\}$. This means
+
+ . Positivity states that the counterfactual treatment strategy of interest has some non-zero probability of actually being followed. Under the assumption that we specify certain extrapolative predictive models correctly, positivity is not strictly necessary
 
 # References
 
