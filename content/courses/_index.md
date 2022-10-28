@@ -115,7 +115,7 @@ For simplicity, we prove $t=m+1$ here:
 {{< math >}}
 $$
 \begin{aligned}
-p\left(Y_{m+1}\left(\overline{A_{m-1}}, \underline{g_m}\right)=y | H_m\right)
+p\left(Y_{m+1}\left(\overline{A_{m-1}}, \underline{g_m}\right)=y | H_m\right)\\
 & =\int_{l_{m+1}} p\left(Y_{m+1}=y | H_m, L_{m+1}=l_{m+1}, A_{m: m+1}=g\left(H_{m: m+1}\right)\right)\\
 & \times p\left(L_{m+1}=l_{m+1} | H_m, L_{m}=l_{m}, A_{m}=g\left(H_m, l_{m}\right)\right)
 \end{aligned}
