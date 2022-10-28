@@ -46,13 +46,13 @@ G-computation is good at  estimating the effects of general dynamic treatment st
 ## G-computation for counterfactual prediction
 
 The goal for this problem is to predict patient outcomes under various future treatment strategies given observed patient histories [(Li et al., 2021)](#1). Let:
-- $t\in \{0,...,K\}$: discrete time
+- $t\in \lbrace 0,...,K\rbrace$: discrete time
 - $A_t$: treatment action at time $t$
 - $Y_t$: potential outcome at time $t$
 - $L_t$: vector of covariates at time $t$ that may influence treatment decisions or be associated with the outcome
-- $\overline{X}_t, \underline{X}_t$: are respectively history and future of a time-varying variable X
-- $H_t=(\overline{L}_t, \overline{A}_{t-1}) $: the patient history at but before time $t$
-- $g=\{g_0,...,g_K\}$: dynamic treatment strategy, a collection of decision functions that map $H_t$ onto a treatment action at time $t$
+- $\overline{X}_t, \underline{X}_t$: are respectively history and future of a time-varying variable $X$
+- $H_t=(\overline{L}_t, \overline{A}_{t-1})$: the patient history at but before time $t$
+- $g=\lbrace g_0,...,g_K\rbrace $: dynamic treatment strategy, a collection of decision functions that map $H_t$ onto a treatment action at time $t$
 
 Therefore, $Y_t(g)$ is the counterfactual outcome observed at time $t$ had, possibly contrary to fact, given that treatment strategy $g$ been followed from baseline (Robins, 1986). Let $Y_t(\overline{A}_{m−1}, \underline{g}_m), t>m$ denote the counterfactual outcome that would be observed if patient had received their observed treatments $\overline{A}_{m−1}$ up to time $m − 1$ then followed strategy $g$ starting from time $m$. Here $g$ can be regarded as the experts.
 
@@ -67,7 +67,7 @@ To estimate the expectation and distribution of counterfactual patient outcome, 
 
 1. Consistency: $\overline{Y}_K(A_K) = \overline{Y}_K$. This means the observed outcome is equal to the counterfactual outcome corresponding to the observed treatment
 2. Sequential Exchangeability: $\underline{Y}_t(g) \perp A_t|H_t, \forall t$. This means all confounding are observed. This would hold, e.g., if all drivers of treatment decisions that were prognostic for the outcome were observed.
-3. Positivity: $P(A_t = g_t(H_t)) > 0 \forall\{H_t:P(H_t) > 0\}$. This means the counterfactual treatment strategy of interest has some non-zero probability of actually being followed. Positivity is not strictly necessary.
+3. Positivity: $P(A_t = g_t(H_t)) > 0, \forall \lbrace H_t:P(H_t) > 0\rbrace$. This means the counterfactual treatment strategy of interest has some non-zero probability of actually being followed. Positivity is not strictly necessary.
 
 ## Identification
 
@@ -85,7 +85,7 @@ For $t > m$, we need to adjust for time-varying confounding. With $X_{i:j} = X_i
 \end{aligned}
 
 
-It is not generally possible to compute this integral in closed form, but it could be approximated through Monte-Carlo simulation. We repeat Algorithm $1 M$ times. (There the outcome $Y_t$ is without loss of generality deemed to be a variable in the vector $L_{t+1}$.) At the end of this process, we have $M$ simulated draws of the counterfactual outcome for each time $t=\{m, \ldots, K\}$. For each $t$, the empirical distribution of these draws constitutes a MonteCarlo approximation of the counterfactual outcome distribution (2). The sample averages of the draws at each time $t$ are an estimate of the conditional expectations (1) and can serve as point predictions for $Y_t\left(\bar{A}_{m-1}, \underline{g}_m\right)$ in a patient with history $H_m$.
+It is not generally possible to compute this integral in closed form, but it could be approximated through Monte-Carlo simulation. We repeat Algorithm $1 M$ times. (There the outcome $Y_t$ is without loss of generality deemed to be a variable in the vector $L_{t+1}$.) At the end of this process, we have $M$ simulated draws of the counterfactual outcome for each time $t=\lbrace m, \ldots, K\rbrace$. For each $t$, the empirical distribution of these draws constitutes a MonteCarlo approximation of the counterfactual outcome distribution (2). The sample averages of the draws at each time $t$ are an estimate of the conditional expectations (1) and can serve as point predictions for $Y_t\left(\bar{A}_{m-1}, \underline{g}_m\right)$ in a patient with history $H_m$.
 
 Key to the g-computation algorithm is the ability to simulate from joint conditional distributions $p\left(L_t \mid \bar{L}_{t-1}, \bar{A}_{t-1}\right)$ of the covariates given patient history at time $t$. Of course, in practice we do not have knowledge of these conditional distributions and need to estimate them from data. Most implementations use generalized linear regression models to estimate the conditional distributions of the covariates. Often, these models do not capture temporal dependencies present in the patient data. We propose the G-Net for this task.
 
