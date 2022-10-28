@@ -72,27 +72,29 @@ To estimate the expectation and distribution of counterfactual patient outcome, 
 
 ![hw3_1](hw3_1.jpg)
 
+A causal DAG representing a data generating process (t=0,1) under sequential exchangeability. Note that all variables influencing treatment (i.e. with arrows directly into treatment) and associated with future outcomes are measured.
+
 ## Identification
 
 Under assumptions 1-3, for $t = m$ we have the identification equality stating that the conditional distribution of the counterfactual is the conditional distribution of the observed outcome given patient history and given that treatment follows the strategy of interest [(Li et al., 2021)](#1):
 
-$$p(Ym(A¯m−1, gm)|Hm) = p(Ym|Hm, Am = gm(Hm))$$
+$$p(Y_m(\overline{A_{m−1}}, g_m)|H_m) = p(Y_m|H_m, A_m = g_m(H_m))$$
 
 For $t > m$, we need to adjust for time-varying confounding. With $X_{i:j} = X_i,..., X_j$ for any random variable X[(Li et al., 2021)](#1):
 
-
+{{< math >}}
 \begin{aligned}
 &p\left(Y_t\left(\bar{A}_{m-1}, \underline{g}_m\right)=y \mid H_m\right) \\
 &=\int_{l_{m+1: t}} p\left(Y_t=y \mid H_m, L_{m+1: t}=l_{m+1: t}, A_{m: t}=g\left(H_{m: t}\right)\right)\\
 \times \prod_{j=m+1}^t p\left(L_j=l_j \mid H_m, L_{m+1: j-1}=l_{m+1: j-1}\right, \left.A_{m, j-1}=g\left(H_m, l_{m+1: j-1}\right)\right).
 \end{aligned}
+{{< /math >}}
 
 
 It is not generally possible to compute this integral in closed form, but it could be approximated through Monte-Carlo simulation. We repeat Algorithm $1 M$ times. (There the outcome $Y_t$ is without loss of generality deemed to be a variable in the vector $L_{t+1}$.) At the end of this process, we have $M$ simulated draws of the counterfactual outcome for each time $t=\lbrace m, \ldots, K\rbrace$. For each $t$, the empirical distribution of these draws constitutes a MonteCarlo approximation of the counterfactual outcome distribution (2). The sample averages of the draws at each time $t$ are an estimate of the conditional expectations (1) and can serve as point predictions for $Y_t\left(\bar{A}_{m-1}, \underline{g_m}\right)$ in a patient with history $H_m$.
 
 Key to the g-computation algorithm is the ability to simulate from joint conditional distributions $p\left(L_t \mid \bar{L}_{t-1}, \bar{A}_{t-1}\right)$ of the covariates given patient history at time $t$. Of course, in practice we do not have knowledge of these conditional distributions and need to estimate them from data. Most implementations use generalized linear regression models to estimate the conditional distributions of the covariates. Often, these models do not capture temporal dependencies present in the patient data. We propose the G-Net for this task.
 
-## The G-Net Framework
 
 # References
 
