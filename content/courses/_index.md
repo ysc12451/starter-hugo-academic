@@ -17,11 +17,11 @@ Please note that the main topic studied in this project is not about identifying
 
 # Motivation
 
-Many real-world causal inference applications require us to study the effects of treatments along time, i.e., dynamic treatment. In healthcare applications, physicians apply several treatments over time, such as different drug dosage levels, types of exercise, and amount of exercise, to achieve some clinical outcomes (Liu et al., 2020). As the action progresses, the patient's status changes accordingly. 
+Many real-world causal inference applications require us to study the effects of treatments along time, i.e., dynamic treatment. In healthcare applications, physicians apply several treatments over time, such as different drug dosage levels, types of exercise, and amount of exercise, to achieve some clinical outcomes [Liu et al., 2020](#2). As the action progresses, the patient's status changes accordingly. 
 
-One the one hand, some studies on modern learning methods have been done to model and solve this type of tasks. In the field of deep learning, some sequential deep learning framework under dynamic time varying treatment strategies in complex longitudinal settings have been introduced (Rui Li et al., 2021). On the other hand, understanding causal relationships may help us to construct more efficient learning models (Yangyi Le et al., 2022), like reinforcement learning (RL), where the agent receives feedback from the environment sequentially and aim to optimize the decision policy within a given time period. 
+One the one hand, some studies on modern learning methods have been done to model and solve this type of tasks. In the field of deep learning, some sequential deep learning framework under dynamic time varying treatment strategies in complex longitudinal settings have been introduced [Li et al. (2021)](#1). On the other hand, understanding causal relationships may help us to construct more efficient learning models, like reinforcement learning (RL), where the agent receives feedback from the environment sequentially and aim to optimize the decision policy within a given time period. 
 
-Random variables may vary for different applications. They can be healthcare treatments and clinical outcomes along time, or promotional offers and final purchases in digital market problems. The causal effect may be average effect as function of random variables, including potential outcomes, from the set of random variables mentioned above. The hypotheses about the relationship between variables may be described in DAG, like in Yangyi Le et al. (2022):
+Random variables may vary for different applications. They can be healthcare treatments and clinical outcomes along time, or promotional offers and final purchases in digital market problems. The causal effect may be average effect as function of random variables, including potential outcomes, from the set of random variables mentioned above. The hypotheses about the relationship between variables may be described in DAG, like in [Yangyi Le et al. (2022)](#3):
 
 ![hw2](featured.png)
 
@@ -35,7 +35,7 @@ Treatment strategies are usually time-varying, where decisions are made at multi
 
 ## g-computation
 
-g-computation is good at  estimating the effects of general dynamic treatment strategies conditioned on patient histories (Daniel et al., 2013). The g-computation algorithm may take arbitrary regression models as input embedding model. While most applications (e.g. Taubman et al. (2009); Young et al. (2011)) have thus far employed classical generalized linear models
+g-computation is good at  estimating the effects of general dynamic treatment strategies conditioned on patient histories (Daniel et al., 2013). A property favored by people is that the g-computation algorithm may take arbitrary regression models as input embedding model. However, introducing simple regression models in g-computation algorithm will cause limited capacity to capture complicated temporal and nonlinear causal structures.
 
 
 $A_t$: treatment
@@ -46,3 +46,12 @@ $A_t$: treatment
 <div id ="1"></div>
 
 - [1] [G-Net: a Recurrent Network Approach to G-Computation for Counterfactual Prediction Under a Dynamic Treatment Regime](https://proceedings.mlr.press/v158/li21a)
+
+<div id ="2"></div>
+
+- [2] [Reinforcement learning for clinical decision support in critical care](https://www.jmir.org/2020/7/e18477/)
+
+<div id ="3"></div>
+
+- [3] [Efficient Reinforcement Learning with Prior Causal Knowledge](https://proceedings.mlr.press/v177/lu22a/lu22a.pdf)
+
