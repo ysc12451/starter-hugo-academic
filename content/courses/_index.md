@@ -116,6 +116,10 @@ For simplicity, we prove $t=m+1$ here:
 $$
 \begin{aligned}
 & p\left(Y_{m+1}\left(\overline{A_{m-1}}, \underline{g_m}\right)=y | H_m\right)\\
+& = p(Y_{m+1}(g_m,g_{m+1})=y|H_m)\\
+& = p(Y_{m+1}=y|H_m, L_{m+1}, A_m=g(H_m), A_{m+1}=g(H_{m+1}))\\
+& = \int_{l_{m+1}} p\left(Y_{m+1}=y | H_m, L_{m+1}=l_{m+1}, A_{m: m+1}=g\left(H_{m: m+1}\right)\right)\\
+& \times p\left(L_{m+1}=l_{m+1} | H_m, L_m=l_m, A_{m}=g\left(H_m\right)\right)
 & =\int_{l_{m+1}} p\left(Y_{m+1}=y | H_m, L_{m+1}=l_{m+1}, A_{m: m+1}=g\left(H_{m: m+1}\right)\right)\\
 & \times p\left(L_{m+1}=l_{m+1} | H_m, A_{m}=g\left(H_m\right)\right)
 \end{aligned}
