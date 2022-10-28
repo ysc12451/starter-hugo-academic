@@ -55,7 +55,7 @@ The goal for this problem is to predict patient outcomes under various future tr
 - $H_t=(\overline{L_t}, \overline{A_{t-1}})$: the patient history at but before time $t$
 - $g=\lbrace g_0,...,g_K\rbrace $: dynamic treatment strategy, a collection of decision functions that map $H_t$ onto a treatment action at time $t$
 
-Therefore, $Y_t(g)$ is the counterfactual outcome observed at time $t$ had, possibly contrary to fact, given that treatment strategy $g$ been followed from baseline (Robins, 1986). Let $Y_t(\overline{A_{m-1}}, \underline{g_m}), t>m$ denote the counterfactual outcome that would be observed if patient had received their observed treatments $\overline{A_{m-1}}$ up to time $m-1$ then followed strategy $g$ starting from time $m$. Here $g$ can be regarded as the experts.
+Therefore, $Y_t(g)$ is the counterfactual outcome observed at time $t$ had, possibly contrary to fact, given that treatment strategy $g$ been followed from baseline [(Robins, 1986)](#6). Let $Y_t(\overline{A_{m-1}}, \underline{g_m}), t>m$ denote the counterfactual outcome that would be observed if patient had received their observed treatments $\overline{A_{m-1}}$ up to time $m-1$ then followed strategy $g$ starting from time $m$. Here $g$ can be regarded as the experts.
 
 The goal for counterfactual point prediction is to estimate expectation of counterfactual patient outcome 
 $$E[Y_t(\overline{A_{m-1}}, \underline{g_m})|H_m], t \ge m$$
@@ -82,7 +82,7 @@ For $t = m$:
 
 $$p(Y_m(\overline{A_{m−1}}, g_m)|H_m) = p(Y_m|H_m, A_m = g_m(H_m))$$
 
-**proof**: This needs only a short derivation with the fact that $H_m=(\overline{L_m}, \overline{A_{m-1}})$ and $A_m=g_m(H_m)=g_m(\overline{L_m}, \overline{A_{m-1}})$ and with the help of the DAG above.
+**Proof**: This needs only a short derivation with the fact that $H_m=(\overline{L_m}, \overline{A_{m-1}})$ and $A_m=g_m(H_m)=g_m(\overline{L_m}, \overline{A_{m-1}})$ and with the help of the DAG above.
 
 {{< math >}}
 $$
@@ -108,7 +108,9 @@ $$
 $$
 {{< /math >}}
 
-**Proof**: To identify the effect in the future: $t>m$, we need to consider time-varying confounding $L$. The basic idea to derive for $t>m$ is to split it into conditional probabilities containing $L$ on each time point and take integral over $L$. Other techniques are what we used for $t=m$. For simplicity, we prove $t=m+1$ here:
+**Proof**: To identify the effect in the future: $t>m$, we need to consider time-varying confounding $L$. The basic idea to derive for $t>m$ is to split it into conditional probabilities containing $L$ on each time point and take integral over $L$. Other techniques are what we used for $t=m$. 
+
+For simplicity, we prove $t=m+1$ here:
 
 {{< math >}}
 $$
@@ -146,6 +148,9 @@ This could be approximated through Monte-Carlo simulation. After simulation, ass
 
 - [5] [Methods for dealing with time‐dependent confounding](https://onlinelibrary.wiley.com/doi/full/10.1002/sim.5686?casa_token=d1IB83DPXvYAAAAA%3AtDUKy3FwHs4XAX_p-rbqMpPYVWsUBTHigJHHuvsIUAjihDQG49F4us8yFAUGzEHkQ1K_NgqVdOcLg5u2_A)
 
+<div id ="6"></div>
+
+- [6] [A new approach to causal inference in mortality studies with a sustained exposure period—application to control of the healthy worker survivor effect](https://www.sciencedirect.com/science/article/pii/0270025586900886)
 
 
 
