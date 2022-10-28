@@ -95,7 +95,7 @@ $$
 {{< math >}}
 $$
 \begin{aligned}
-\times \prod_{j=m+1}^t p\left(L_j=l_j | H_m, L_{m+1: j-1}=l_{m+1: j-1}\right, A_{m, j-1}=g\left(H_m, l_{m+1: j-1}\right)\right).
+*  p\left(L_j=l_j | H_m, L_{m+1: j-1}=l_{m+1: j-1}\right, A_{m, j-1}=g\left(H_m, l_{m+1: j-1}\right)\right).
 \end{aligned}
 $$
 {{< /math >}}
