@@ -69,7 +69,7 @@ To estimate the expectation and distribution of counterfactual patient outcome, 
 2. Sequential Exchangeability: $\underline{Y}_t(g) \perp A_t|H_t, \forall t$. This means all confounding are observed. This would hold, e.g., if all drivers of treatment decisions that were prognostic for the outcome were observed.
 3. Positivity: $P(A_t = g_t(H_t)) > 0, \forall \lbrace H_t:P(H_t) > 0\rbrace$. This means the counterfactual treatment strategy of interest has some non-zero probability of actually being followed. Positivity is not strictly necessary.
 
-![hw3_1](hw3_1.png)
+![hw3_1](hw3_1.jpg)
 
 ## Identification
 
