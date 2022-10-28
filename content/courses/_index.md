@@ -103,7 +103,7 @@ For $t>m$. Denote $X_{i:j} = X_i,..., X_j$ for any random variable $X$[(Li et al
 $$
 \begin{aligned}
 & p\left(Y_t\left(\overline{A_{m-1}}, \underline{g_m}\right)=y | H_m\right) =\int_{l_{m+1: t}} p\left(Y_t=y | H_m, L_{m+1: t}=l_{m+1: t}, A_{m: t}=g\left(H_{m: t}\right)\right)\\
-& \times \prod_{j=m+1}^t p\left(L_j=l_j | H_m, A_{m, j-1}=g\left(H_m\right)\right)
+& \times \prod_{j=m+1}^t p\left(L_j=l_j | H_m, L_{m+1:j-1}=l_{m+1:j-1}, A_{m, j-1}=g\left(H_m, l_{m+1: j-1}\right)\right)
 \end{aligned}
 $$
 {{< /math >}}
@@ -117,7 +117,7 @@ $$
 \begin{aligned}
 & p\left(Y_{m+1}\left(\overline{A_{m-1}}, \underline{g_m}\right)=y | H_m\right)\\
 & =\int_{l_{m+1}} p\left(Y_{m+1}=y | H_m, L_{m+1}=l_{m+1}, A_{m: m+1}=g\left(H_{m: m+1}\right)\right)\\
-& \times p\left(L_{m+1}=l_{m+1} | H_m, L_{m}=l_{m}, A_{m}=g\left(H_m, l_{m}\right)\right)
+& \times p\left(L_{m+1}=l_{m+1} | H_m, A_{m}=g\left(H_m\right)\right)
 \end{aligned}
 $$
 {{< /math >}}
