@@ -72,7 +72,7 @@ To estimate the expectation and distribution of counterfactual patient outcome, 
 
 ![hw3_1](hw3_1.jpg)
 
-A causal DAG representing a data generating process (t=0,1) under sequential exchangeability. Note that all variables influencing treatment (i.e. with arrows directly into treatment) and associated with future outcomes are measured.
+A causal DAG representing a time series data generating process (t=0,1) under sequential exchangeability. Note that all variables influencing treatment (i.e. with arrows directly into treatment) and associated with future outcomes are measured. [(Li et al., 2021)](#1)
 
 ## 3.3 Identification
 
@@ -80,13 +80,28 @@ Under assumptions 1-3, for $t = m$ we have the identification equality stating t
 
 $$p(Y_m(\overline{A_{m−1}}, g_m)|H_m) = p(Y_m|H_m, A_m = g_m(H_m))$$
 
-For $t > m$, we need to adjust for time-varying confounding. With $X_{i:j} = X_i,..., X_j$ for any random variable X[(Li et al., 2021)](#1):
+*proof*: This needs only a short derivation with the fact that $H_m=(\overline{L_m}, \overline{A_{m-1}})$ and $A_m=g_m(H_m)=g_m(\overline{L_m}, \overline{A_{m-1}})$ and with the help of the DAG above.
+
+{{< math >}}
+$$
+\begin{aligned}
+p(Y_m(\overline{A_{m-1}},g_m)|H_m)
+&=p(Y_m(g_m)|H_m)\\
+&=p(Y_m(A_m=g_m(H_m))|H_m)\\
+&=p(Y_m|H_m, A_m=g_m(H_m))
+\end{aligned}
+$$
+{{< /math >}}
+
+The first equation is from causal irrelevance since $H_m$ contains all information of $A_{m-1}$ by definition. The second one is from the definition of the decision making function $g_m$. The third one is from conditional independence: all other things that have effect on $Y_m$ have been conditioned within $H_m$ except from $A_m=g_m(H_m)$.
+
+For $t>m$, we need to adjust for time-varying confounding. With $X_{i:j} = X_i,..., X_j$ for any random variable $X$[(Li et al., 2021)](#1):
 
 {{< math >}}
 $$
 \begin{aligned}
 & p\left(Y_t\left(\overline{A_{m-1}}, \underline{g_m}\right)=y | H_m\right) =\int_{l_{m+1: t}} p\left(Y_t=y | H_m, L_{m+1: t}=l_{m+1: t}, A_{m: t}=g\left(H_{m: t}\right)\right)\\
-& \times \prod_{j=m+1}^t p\left(L_j=l_j | H_m, L_{m+1:j-1}=l_{m+1:j-1}, A_{m, j-1}=g\left(H_m, l_{m+1: j-1}\right)\right).
+& \times \prod_{j=m+1}^t p\left(L_j=l_j | H_m, L_{m+1:j-1}=l_{m+1:j-1}, A_{m, j-1}=g\left(H_m, l_{m+1: j-1}\right)\right)
 \end{aligned}
 $$
 {{< /math >}}
