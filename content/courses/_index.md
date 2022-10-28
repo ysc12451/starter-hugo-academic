@@ -22,3 +22,5 @@ In this course project, I would like to study the interaction between causal inf
 Random variables needed here may vary for different applications. They can be healthcare treatments and clinical outcomes along time, or promotional offers and final purchases in digital market problems. The causal effect may be average effect as function of random variables, including potential outcomes, from the set of random variables mentioned above. The hypotheses about the relationship between variables may be described in DAG, like in Yangyi Le et al. (2022):
 
 ![hw2](featured.png)
+
+$A_t: treatment$
