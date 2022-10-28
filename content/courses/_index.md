@@ -35,7 +35,7 @@ Counterfactual prediction	is a fundamental problem in making estimation of expec
 
 ## G-method
 
-Treatment strategies are usually time-varying, where decisions are made at multiple time points, and dynamic, where decisions are formed as a function of the previous history at each time point. For time-varying treatment strategies with treatment-confounder feedback, there are one kind of approaches known as “G-methods” (Hernan and Robins, 2020; Robins and Hernan, 2009) that perform well in estimating their effects. Many models have been proposed in the field of G-methods, including G-computation (Robins, 1986, 1987), structural nested models (Robins, 1994; Vansteelandt and Joffe, 2014), and marginal structural models (Robins et al., 2000; Orellana et al., 2008). In this project, I will focus on G-computation.
+Treatment strategies are usually time-varying, where decisions are made at multiple time points, and dynamic, where decisions are formed as a function of the previous history at each time point. For time-varying treatment strategies with treatment-confounder feedback, there are one kind of approaches known as “G-methods” [(Robins and Hernan, 2009)](#4) that perform well in estimating their effects. Many models have been proposed in the field of G-methods, including G-computation (Robins, 1986, 1987), structural nested models (Robins, 1994; Vansteelandt and Joffe, 2014), and marginal structural models (Robins et al., 2000; Orellana et al., 2008). In this project, I will focus on G-computation.
 
 ## G-computation
 
@@ -67,7 +67,7 @@ To estimate the expectation and distribution of counterfactual patient outcome, 
 
 1. Consistency: $\overline{Y}_K(A_K) = \overline{Y}_K$. This means the observed outcome is equal to the counterfactual outcome corresponding to the observed treatment
 2. Sequential Exchangeability: $\underline{Y}_t(g) \perp A_t|H_t, \forall t$. This means all confounding are observed. This would hold, e.g., if all drivers of treatment decisions that were prognostic for the outcome were observed.
-3. Positivity: $P(A_t = g_t(H_t)) > 0 ∀\{H_t:P(H_t) > 0\}$. This means the counterfactual treatment strategy of interest has some non-zero probability of actually being followed. Positivity is not strictly necessary.
+3. Positivity: $P(A_t = g_t(H_t)) > 0 \forall\{H_t:P(H_t) > 0\}$. This means the counterfactual treatment strategy of interest has some non-zero probability of actually being followed. Positivity is not strictly necessary.
 
 ## Identification
 
@@ -104,4 +104,8 @@ Key to the g-computation algorithm is the ability to simulate from joint conditi
 <div id ="3"></div>
 
 - [3] [Efficient Reinforcement Learning with Prior Causal Knowledge](https://proceedings.mlr.press/v177/lu22a/lu22a.pdf)
+
+<div id ="4"></div>
+
+- [4] [Estimation of the causal effects of time varying exposures. In Garrett Fitzmaurice, Marie Davidian, Geert Verbeke, and Geert Molenberghs, editors, Longitudinal Data Analysis](https://cdn1.sph.harvard.edu/wp-content/uploads/sites/343/2013/03/abc.pdf)
 
