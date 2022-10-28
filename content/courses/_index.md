@@ -52,7 +52,7 @@ The goal for this problem is to predict patient outcomes under various future tr
 - $Y_t$: potential outcome at time $t$
 - $L_t$: vector of covariates at time $t$ that may influence treatment decisions or be associated with the outcome
 - $\overline{X}_t, \underline{X}_t$: are respectively history and future of a time-varying variable $X$
-- $H_t=(\overline{L}_t)$: the patient history at but before time $t$
+- $H_t=(\overline{L}_t, \overline{A}_{t-1})$: the patient history at but before time $t$
 - $g=\lbrace g_0,...,g_K\rbrace $: dynamic treatment strategy, a collection of decision functions that map $H_t$ onto a treatment action at time $t$
 
 Therefore, $Y_t(g)$ is the counterfactual outcome observed at time $t$ had, possibly contrary to fact, given that treatment strategy $g$ been followed from baseline (Robins, 1986). Let $Y_t(\overline{A}_{m-1}, \underline{g}_m), t>m$ denote the counterfactual outcome that would be observed if patient had received their observed treatments $\overline{A}_{m-1}$ up to time $m-1$ then followed strategy $g$ starting from time $m$. Here $g$ can be regarded as the experts.
