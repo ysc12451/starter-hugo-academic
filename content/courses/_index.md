@@ -126,10 +126,10 @@ $$
 $$
 {{< /math >}}
 
-The first equation is from causal irrelevance as in the case $t=m$ and the fact that $\underline{g_m}=(g_m, g_{m+1}$ as $t=m+1$. The second one is by g-formula and similar to the case $t=m$, except for adding a $L_{m+1}$ because the condition $H_m$ does not contain it. The third one is the expension for $L_{m+1}$ by conditional probability and integral. The last one is because $L_m$ is within $H_m$.
+The first equation is from causal irrelevance as in the case $t=m$ and the fact that $\underline{g_m}=(g_m, g_{m+1}$ as $t=m+1$. The second one is by g-formula and similar to the case $t=m$, except for adding a $L_{m+1}$ because the condition $H_m$ does not contain it. The third one is the expension for $L_{m+1}$ by conditional probability and integral. The last one is because $L_m$ is within $H_m$. $\Box$
 
 
-This could be approximated through Monte-Carlo simulation. After simulation, assume now we have $M$ simulated draws of the counterfactual outcome for each time $t=\lbrace m, \ldots, K\rbrace$, then for each $t$, the empirical distribution constitutes a MonteCarlo approximation of the counterfactual outcome distribution. The sample averages at time $t$ are an estimate of the conditional expectations and can serve as point predictions for $Y_t\left(\overline{A_{m-1}}, \underline{g_m}\right)$ in a patient with history $H_m$.
+This could be approximated through Monte-Carlo simulation. After simulation, assume now we have $M$ simulated draws of the counterfactual outcome for each time $t=\lbrace m, \ldots, K\rbrace$, then for each $t$, the empirical distribution constitutes a Monte-Carlo approximation of the counterfactual outcome distribution. The sample averages at time $t$ are an estimate of the conditional expectations and can serve as point predictions for $Y_t\left(\overline{A_{m-1}}, \underline{g_m}\right)$ in a patient with history $H_m$ [(Li et al., 2021)](#1).
 
 # References
 
