@@ -50,16 +50,24 @@ The goal for this problem is to predict patient outcomes under various future tr
 - $A_t$: treatment action at time $t$
 - $Y_t$: potential outcome at time $t$
 - $L_t$: vector of covariates at time $t$ that may influence treatment decisions or be associated with the outcome
-- $\overline{X_t}, \underline{X_t}$: are respectively history and future of a time-varying variable $X$
-- $H_t=(\overline{L_t}, \overline{A_{t-1}})$: the patient history at but before time $t$
+- $\overline{X}_t, \underline{X}_t$: are respectively history and future of a time-varying variable $X$
+- $H_t=(\overline{L}_t, \overline{A}_{t-1})$: the patient history at but before time $t$
 - $g=\{g_0,...,g_K\}$: dynamic treatment strategy, a collection of decision functions that map $H_t$ onto a treatment action at time $t$
 
-Therefore, $Y_t(g)$ is the counterfactual outcome observed at time $t$ had, possibly contrary to fact, given that treatment strategy $g$ been followed from baseline (Robins, 1986). Let $Y_t(\overline{A_{m−1}}, \underline{g_m}), t>m$ denote the counterfactual outcome that would be observed if patient had received their observed treatments $\overline{A_{m−1}}$ up to time $m − 1$ then followed strategy $g$ starting from time $m$. Here $g$ can be regarded as the experts.
+Therefore, $Y_t(g)$ is the counterfactual outcome observed at time $t$ had, possibly contrary to fact, given that treatment strategy $g$ been followed from baseline (Robins, 1986). Let $Y_t(\overline{A}_{m−1}, \underline{g}_m), t>m$ denote the counterfactual outcome that would be observed if patient had received their observed treatments $\overline{A}_{m−1}$ up to time $m − 1$ then followed strategy $g$ starting from time $m$. Here $g$ can be regarded as the experts.
 
 The goal for counterfactual point prediction is to estimate expectation of counterfactual patient outcome 
-$$E[Y_t(\overline{A_{m−1}}, \underline{g_m})|H_m], t ≥ m$$
+$$E[Y_t(\overline{A}_{m−1}, \underline{g}_m)|H_m], t ≥ m$$
 given observed patient history through time m for any m and any specified treatment strategy g. Another thing that we may be interested in estimating is the counterfactual outcome distributions at future time points 
-$$p(Y_t(\overline{A_{m−1}}, \underline{g_m})|H_m), t ≥ m$$
+$$p(Y_t(\overline{A}_{m−1}, \underline{g}_m)|H_m), t ≥ m$$
+
+## Assumptions
+
+To estimate the expectation and distribution of counterfactual patient outcome, we need three assumptions [(Li et al., 2021)](#1):
+
+1. Consistency: $\overline{Y}_K(A_K) = \overline{Y}_K$
+2. Sequential Exchangeability: $Y_t(g) \upmodels A_t|H_t, \all t$
+3. Positivity: P(At = gt(Ht)) > 0 ∀{Ht : P(Ht) > 0}
 
 # References
 
