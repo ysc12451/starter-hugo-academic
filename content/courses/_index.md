@@ -66,8 +66,22 @@ $$p(Y_t(\overline{A}_{m−1}, \underline{g}_m)|H_m), t ≥ m$$
 To estimate the expectation and distribution of counterfactual patient outcome, we need three assumptions [(Li et al., 2021)](#1):
 
 1. Consistency: $\overline{Y}_K(A_K) = \overline{Y}_K$. This means the observed outcome is equal to the counterfactual outcome corresponding to the observed treatment
-2. Sequential Exchangeability: $\underline{Y}_t(g) \perp A_t|H_t, \forall t$. This means all confounding are observed. This would hold, e.g., if all drivers of treatment decisions that were prognostic for the outcome were observed.
+2. Sequential Exchangeability: $\underline{Y}_t(g) \perp\!\!\!\perp A_t|H_t, \forall t$. This means all confounding are observed. This would hold, e.g., if all drivers of treatment decisions that were prognostic for the outcome were observed.
 3. Positivity: $P(A_t = g_t(H_t)) > 0 ∀\{H_t:P(H_t) > 0\}$. This means the counterfactual treatment strategy of interest has some non-zero probability of actually being followed. Positivity is not strictly necessary.
+
+## Identification
+
+Under assumptions 1-3, for t = m we have simply
+that
+p(Ym(A¯m−1, gm)|Hm) = p(Ym|Hm, Am = gm(Hm)), (3)
+i.e. the conditional distribution of the counterfactual is simply the conditional distribution of the
+observed outcome given patient history and given
+that treatment follows the strategy of interest. For
+t > m, things are slightly more complex because we
+need to adjust for time-varying confounding. With
+Xi:j = Xi
+, . . . , Xj for any random variable X, under
+assumptions 1-3 the g-formula yields
 
 # References
 
