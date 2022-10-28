@@ -76,7 +76,9 @@ A causal DAG representing a time series data generating process (t=0,1) under se
 
 ## 3.3 Identification
 
-Under assumptions 1-3, for $t = m$ we have the identification equality stating that the conditional distribution of the counterfactual is the conditional distribution of the observed outcome given patient history and given that treatment follows the strategy of interest [(Li et al., 2021)](#1):
+Under assumptions 1-3, we have the identification equality stating that the conditional distribution of the counterfactual is the conditional distribution of the observed outcome given patient history and given that treatment follows the strategy of interest [(Li et al., 2021)](#1).
+
+For $t = m$:
 
 $$p(Y_m(\overline{A_{m−1}}, g_m)|H_m) = p(Y_m|H_m, A_m = g_m(H_m))$$
 
@@ -95,7 +97,7 @@ $$
 
 The first equation is from causal irrelevance since $H_m$ contains all information of $A_{m-1}$ by definition. The second one is from the definition of the decision making function $g_m$. The third one is from conditional independence: all other things that have effect on $Y_m$ have been conditioned within $H_m$ except from $A_m=g_m(H_m)$. $\Box$
 
-For $t>m$, we need to consider time-varying confounding. With $X_{i:j} = X_i,..., X_j$ for any random variable $X$[(Li et al., 2021)](#1):
+For $t_m$. Denote $X_{i:j} = X_i,..., X_j$ for any random variable $X$[(Li et al., 2021)](#1):
 
 {{< math >}}
 $$
@@ -105,6 +107,20 @@ $$
 \end{aligned}
 $$
 {{< /math >}}
+
+**Proof**: To identify the effect in the future: $t>m$, we need to consider time-varying confounding $L$. The basic idea to derive for $t>m$ is to split it into conditional probabilities containing $L$ on each time point and take integral over $L$. Other techniques are what we used for $t=m$. For simplicity, we prove $t=m+1$ here:
+
+{{< math >}}
+$$
+\begin{aligned}
+p\left(Y_{m+1}\left(\overline{A_{m-1}}, \underline{g_m}\right)=y | H_m\right)
+& =\int_{l_{m+1}} p\left(Y_{m+1}=y | H_m, L_{m+1}=l_{m+1}, A_{m: m+1}=g\left(H_{m: m+1}\right)\right)\\
+& \times p\left(L_{m+1}=l_{m+1} | H_m, L_{m}=l_{m}, A_{m}=g\left(H_m, l_{m}\right)\right)
+\end{aligned}
+$$
+{{< /math >}}
+
+
 
 This could be approximated through Monte-Carlo simulation. After simulation, assume now we have $M$ simulated draws of the counterfactual outcome for each time $t=\lbrace m, \ldots, K\rbrace$, then for each $t$, the empirical distribution constitutes a MonteCarlo approximation of the counterfactual outcome distribution. The sample averages at time $t$ are an estimate of the conditional expectations and can serve as point predictions for $Y_t\left(\overline{A_{m-1}}, \underline{g_m}\right)$ in a patient with history $H_m$.
 
