@@ -1,7 +1,7 @@
 ---
 title: STAT 888 Project
 summary: STAT 888 project
-date: "10/5/2022"
+date: "10/27/2022"
 
 reading_time: false  # Show estimated reading time?
 share: false  # Show social sharing links?
@@ -9,7 +9,7 @@ profile: false  # Show author profile?
 comments: true  # Show comments?
 
 # Optional header image (relative to `assets/media/` folder).
-header: false
+header:
   caption: ""
   image: ""
 ---
@@ -35,7 +35,7 @@ Treatment strategies are usually time-varying, where decisions are made at multi
 
 ## g-computation
 
-g-computation is good at  estimating the effects of general dynamic treatment strategies conditioned on patient histories (Daniel et al., 2013).
+g-computation is good at  estimating the effects of general dynamic treatment strategies conditioned on patient histories (Daniel et al., 2013). The g-computation algorithm may take arbitrary regression models as input embedding model. While most applications (e.g. Taubman et al. (2009); Young et al. (2011)) have thus far employed classical generalized linear models
 
 
 $A_t$: treatment
