@@ -56,6 +56,11 @@ The goal for this problem is to predict patient outcomes under various future tr
 
 Therefore, $Y_t(g)$ is the counterfactual outcome observed at time $t$ had, possibly contrary to fact, given that treatment strategy $g$ been followed from baseline (Robins, 1986). Let $Y_t(\overline{A_{m−1}}, \underline{g_m}), t>m$ denote the counterfactual outcome that would be observed if patient had received their observed treatments $\overline{A_{m−1}}$ up to time $m − 1$ then followed strategy $g$ starting from time $m$. Here $g$ can be regarded as the experts.
 
+The goal for counterfactual point prediction is to estimate expectation of counterfactual patient outcome 
+$$E[Y_t(\overline{A_{m−1}}, \underline{g_m})|H_m], t ≥ m$$
+given observed patient history through time m for any m and any specified treatment strategy g. Another thing that we may be interested in estimating is the counterfactual outcome distributions at future time points 
+$$p(Y_t(\overline{A_{m−1}}, \underline{g_m})|H_m), t ≥ m$$
+
 # References
 
 <div id ="1"></div>
