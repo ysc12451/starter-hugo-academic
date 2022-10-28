@@ -15,7 +15,7 @@ header:
 ---
 Please note that the main topic studied in this project is not about identifying a causal estimand in a specific problem, but more about one kind of methods estimating effects for time-varying treatment strategies with causal relationship.
 
-# Motivation
+# Motivation (HW2)
 
 Many real-world causal inference applications require us to study the effects of treatments along time, i.e., dynamic treatment. In healthcare applications, physicians apply several treatments over time, such as different drug dosage levels, types of exercise, and amount of exercise, to achieve some clinical outcomes [Liu et al., 2020](#2). As the action progresses, the patient's status changes accordingly. 
 
@@ -25,9 +25,9 @@ Random variables may vary for different applications. They can be healthcare tre
 
 ![hw2](featured.png)
 
-# Introduction
+# Introduction (HW2 & HW3)
 
-In this course project, I would like to study one type of methods for estimating the effects of general dynamic treatment strategies conditioned on historical data. In addition, I will try to understand how they can work together for dynamic treatment. The main reference for this project are Li, Rui, et al. "G-Net: a Recurrent Network Approach to G-Computation for Counterfactual Prediction Under a Dynamic Treatment Regime." [Li et al. (2021)](#1). PMLR, 2021 and other related materials.
+In this course project, I would like to study one type of methods for estimating the effects of general dynamic treatment strategies conditioned on historical data with a generalized problem setting for patient outcomes under time-varying treatment strategies based on observed patient behaviors. In addition, I will try to understand how they can work together for dynamic treatment. The main reference for this project are Li, Rui, et al. "G-Net: a Recurrent Network Approach to G-Computation for Counterfactual Prediction Under a Dynamic Treatment Regime." [Li et al. (2021)](#1). PMLR, 2021 and other related materials.
 
 ## g-method
 
@@ -37,8 +37,14 @@ Treatment strategies are usually time-varying, where decisions are made at multi
 
 g-computation is good at  estimating the effects of general dynamic treatment strategies conditioned on patient histories (Daniel et al., 2013). A property favored by people is that the g-computation algorithm may take arbitrary regression models as input embedding model. However, introducing simple regression models in g-computation algorithm will cause limited capacity to capture complicated temporal and nonlinear causal structures.
 
+# Problem setting (HW2 & HW3)
 
-$A_t$: treatment
+The goal for this problem is to predict patient outcomes under various future treatment strategies given observed patient histories. Let:
+- $t\in \{0,...,K}$: discrete time
+- $A_t$: treatment action at time $t$
+- $Y_t$: potential outcome at time $t$
+- $L_t$: vector of covariates at time $t$ that may influence treatment decisions or be associated with the outcome
+- $\overline{X_t}, \underline{X_t}$: are respectively history and future of a time-varying variable $X$
 
 
 # References
