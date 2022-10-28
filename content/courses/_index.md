@@ -85,9 +85,9 @@ For $t > m$, we need to adjust for time-varying confounding. With $X_{i:j} = X_i
 {{< math >}}
 $$
 \begin{aligned}
-&p\left(Y_t\left(\bar{A}_{m-1}, \underline{g_m}\right)=y \mid H_m\right) \\
-&=\int_{l_{m+1: t}} p\left(Y_t=y \mid H_m, L_{m+1: t}=l_{m+1: t}, A_{m: t}=g\left(H_{m: t}\right)\right)\\
-\times \prod_{j=m+1}^t p\left(L_j=l_j \mid H_m, L_{m+1: j-1}=l_{m+1: j-1}\right, \left.A_{m, j-1}=g\left(H_m, l_{m+1: j-1}\right)\right).
+p\left(Y_t\left(\overline{A_{m-1}}, \underline{g_m}\right)=y | H_m\right) \\
+&=\int_{l_{m+1: t}} p\left(Y_t=y | H_m, L_{m+1: t}=l_{m+1: t}, A_{m: t}=g\left(H_{m: t}\right)\right)\\
+&\times \prod_{j=m+1}^t p\left(L_j=l_j | H_m, L_{m+1: j-1}=l_{m+1: j-1}\right, \left.A_{m, j-1}=g\left(H_m, l_{m+1: j-1}\right)\right).
 \end{aligned}
 $$
 {{< /math >}}
@@ -103,10 +103,7 @@ $$
 $$
 {{< /math >}}
 
-It is not generally possible to compute this integral in closed form, but it could be approximated through Monte-Carlo simulation. We repeat Algorithm $1 M$ times. (There the outcome $Y_t$ is without loss of generality deemed to be a variable in the vector $L_{t+1}$.) At the end of this process, we have $M$ simulated draws of the counterfactual outcome for each time $t=\lbrace m, \ldots, K\rbrace$. For each $t$, the empirical distribution of these draws constitutes a MonteCarlo approximation of the counterfactual outcome distribution (2). The sample averages of the draws at each time $t$ are an estimate of the conditional expectations (1) and can serve as point predictions for $Y_t\left({\bar{A}}_{m-1}, \underline{g_m}\right)$ in a patient with history $H_m$.
-
-Key to the g-computation algorithm is the ability to simulate from joint conditional distributions $p(L_t \mid {\bar{L}}_{t-1}, {\bar{A}}_{t-1})$ of the covariates given patient history at time $t$. Of course, in practice we do not have knowledge of these conditional distributions and need to estimate them from data. Most implementations use generalized linear regression models to estimate the conditional distributions of the covariates. Often, these models do not capture temporal dependencies present in the patient data. We propose the G-Net for this task.
-
+This could be approximated through Monte-Carlo simulation. After simulation, assume now we have $M$ simulated draws of the counterfactual outcome for each time $t=\lbrace m, \ldots, K\rbrace$, then for each $t$, the empirical distribution constitutes a MonteCarlo approximation of the counterfactual outcome distribution. The sample averages at time $t$ are an estimate of the conditional expectations and can serve as point predictions for $Y_t\left(\overline{A_{m-1}}, \underline{g_m}\right)$ in a patient with history $H_m$.
 
 # References
 
