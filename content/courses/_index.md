@@ -15,7 +15,7 @@ header:
 ---
 Please note that the main topic studied in this project is not about identifying a causal estimand in a specific problem, but more about one kind of methods estimating effects for time-varying treatment strategies with causal relationship.
 
-# Motivation (HW2)
+# 1 Motivation (HW2)
 
 Many real-world causal inference applications require us to study the effects of treatments along time, i.e., dynamic treatment. In healthcare applications, physicians apply several treatments over time, such as different drug dosage levels, types of exercise, and amount of exercise, to achieve some clinical outcomes [(Liu et al., 2020)](#2). As the action progresses, the patient's status changes accordingly. 
 
@@ -25,25 +25,25 @@ Random variables may vary for different applications. They can be healthcare tre
 
 ![hw2](featured.png)
 
-# Introduction (HW2 & HW3)
+# 2 Introduction (HW2 & HW3)
 
 In this course project, I would like to study one type of methods for estimating the effects of general dynamic treatment strategies conditioned on historical data with a generalized problem setting for patient outcomes under time-varying treatment strategies based on observed patient behaviors. In addition, I will try to understand how they can work together for dynamic treatment. The main reference for this project are Li, Rui, et al. "G-Net: a Recurrent Network Approach to G-Computation for Counterfactual Prediction Under a Dynamic Treatment Regime." [(Li et al., 2021)](#1). PMLR, 2021 and other related materials.
 
-## Counterfactual prediction
+## 2.1 Counterfactual prediction
 
 Counterfactual prediction	is a fundamental problem in making estimation of expected future values of variables under alternative choices of action given observed history. Counterfactual prediction is a causal task where it must account for the causal effects of treatment strategies which are different from the strategies applied.
 
-## G-method
+## 2.2 G-method
 
 Treatment strategies are usually time-varying, where decisions are made at multiple time points, and dynamic, where decisions are formed as a function of the previous history at each time point. For time-varying treatment strategies with treatment-confounder feedback, there are one kind of approaches known as “G-methods” [(Robins and Hernan, 2009)](#4) that perform well in estimating their effects. Many models have been proposed in the field of G-methods, including G-computation, structural nested models, and marginal structural models. In this project, I will focus on G-computation.
 
-## G-computation
+## 2.3 G-computation
 
 G-computation is good at  estimating the effects of general dynamic treatment strategies conditioned on patient histories [(Daniel et al., 2013)](#5). A property favored by people is that the G-computation algorithm may take arbitrary regression models as input embedding model. However, introducing simple regression models in G-computation algorithm will cause limited capacity to capture complicated temporal and nonlinear causal structures.
 
-# Problem setting (HW2 & HW3)
+# 3 Problem setting (HW2 & HW3)
 
-## G-computation for counterfactual prediction
+## 3.1 G-computation for counterfactual prediction
 
 The goal for this problem is to predict patient outcomes under various future treatment strategies given observed patient histories [(Li et al., 2021)](#1). Let:
 
@@ -62,7 +62,7 @@ $$E[Y_t(\overline{A_{m-1}}, \underline{g_m})|H_m], t \ge m$$
 given observed patient history through time m for any m and any specified treatment strategy g. Another thing that we may be interested in estimating is the counterfactual outcome distributions at future time points 
 $$p(Y_t(\overline{A_{m-1}}, \underline{g_m})|H_m), t \ge m$$
 
-## Assumptions
+## 3.2 Assumptions
 
 To estimate the expectation and distribution of counterfactual patient outcome, we need three assumptions [(Li et al., 2021)](#1):
 
@@ -74,7 +74,7 @@ To estimate the expectation and distribution of counterfactual patient outcome, 
 
 A causal DAG representing a data generating process (t=0,1) under sequential exchangeability. Note that all variables influencing treatment (i.e. with arrows directly into treatment) and associated with future outcomes are measured.
 
-## Identification
+## 3.3 Identification
 
 Under assumptions 1-3, for $t = m$ we have the identification equality stating that the conditional distribution of the counterfactual is the conditional distribution of the observed outcome given patient history and given that treatment follows the strategy of interest [(Li et al., 2021)](#1):
 
@@ -100,17 +100,6 @@ $$
 $$
 {{< /math >}}
 
-
-{{< math >}}
-$$
-\begin{aligned}
-    \mathbb{E}\left[ C(i,u) \right] &= \mathbb{E}\left[ C(i,u)\middle| U=u \right] \\
-    &= \mathbb{E}\left[ C(i,U)\middle| U=u \right] \\
-    &= \mathbb{E}\left[ C(i,U(i))\middle| U(i)=u \right] \\
-    &= \mathbb{E}\left[ C(i)\middle| U=u \right].
-\end{aligned}
-$$
-{{< /math >}}
 
 This could be approximated through Monte-Carlo simulation. After simulation, assume now we have $M$ simulated draws of the counterfactual outcome for each time $t=\lbrace m, \ldots, K\rbrace$, then for each $t$, the empirical distribution constitutes a MonteCarlo approximation of the counterfactual outcome distribution. The sample averages at time $t$ are an estimate of the conditional expectations and can serve as point predictions for $Y_t\left(\overline{A_{m-1}}, \underline{g_m}\right)$ in a patient with history $H_m$.
 
