@@ -76,6 +76,10 @@ A causal DAG representing a time series data generating process (t=0,1) under se
 
 ## 3.3 Identification
 
+To Help the proof, I draw a causal graph as below:
+
+![hw3_2](hw3_2.jpg)
+
 Under assumptions 1-3, we have the identification equality stating that the conditional distribution of the counterfactual is the conditional distribution of the observed outcome given patient history and given that treatment follows the strategy of interest [(Li et al., 2021)](#1).
 
 For $t = m$:
