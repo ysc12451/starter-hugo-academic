@@ -51,7 +51,7 @@ The goal for this problem is to predict patient outcomes under various future tr
 - $Y_t$: potential outcome at time $t$
 - $L_t$: vector of covariates at time $t$ that may influence treatment decisions or be associated with the outcome
 - $\overline{X}_t, \underline{X}_t$: are respectively history and future of a time-varying variable $X$
-- $H_t=(\overline{L}_t, \overline{A}_{t-1})$: the patient history at but before time $t$
+- $ H_t=(\overline{L}_t, \overline{A}_{t-1}) $: the patient history at but before time $t$
 - $g=\{g_0,...,g_K\}$: dynamic treatment strategy, a collection of decision functions that map $H_t$ onto a treatment action at time $t$
 
 Therefore, $Y_t(g)$ is the counterfactual outcome observed at time $t$ had, possibly contrary to fact, given that treatment strategy $g$ been followed from baseline (Robins, 1986). Let $Y_t(\overline{A}_{m−1}, \underline{g}_m), t>m$ denote the counterfactual outcome that would be observed if patient had received their observed treatments $\overline{A}_{m−1}$ up to time $m − 1$ then followed strategy $g$ starting from time $m$. Here $g$ can be regarded as the experts.
@@ -71,12 +71,10 @@ To estimate the expectation and distribution of counterfactual patient outcome, 
 
 ## Identification
 
-Under assumptions 1-3, for t = m we have simply
-that
-p(Ym(A¯m−1, gm)|Hm) = p(Ym|Hm, Am = gm(Hm)), (3)
-i.e. the conditional distribution of the counterfactual is simply the conditional distribution of the
-observed outcome given patient history and given
-that treatment follows the strategy of interest. For
+Under assumptions 1-3, for t = m we have the identification equality stating that the conditional distribution of the counterfactual is simply the conditional distribution of the observed outcome given patient history and given that treatment follows the strategy of interest:
+$$p(Ym(A¯m−1, gm)|Hm) = p(Ym|Hm, Am = gm(Hm))$$
+
+. For
 t > m, things are slightly more complex because we
 need to adjust for time-varying confounding. With
 Xi:j = Xi
