@@ -23,4 +23,4 @@ Random variables needed here may vary for different applications. They can be he
 
 ![hw2](featured.png)
 
-$A_t: treatment$
+$A_t$: treatment
