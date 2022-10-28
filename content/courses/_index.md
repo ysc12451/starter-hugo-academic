@@ -83,13 +83,25 @@ $$p(Y_m({\overline{A}}_{m−1}, g_m)|H_m) = p(Y_m|H_m, A_m = g_m(H_m))$$
 For $t > m$, we need to adjust for time-varying confounding. With $X_{i:j} = X_i,..., X_j$ for any random variable X[(Li et al., 2021)](#1):
 
 {{< math >}}
+$$
 \begin{aligned}
 &p\left(Y_t\left(\bar{A}_{m-1}, \underline{g}_m\right)=y \mid H_m\right) \\
 &=\int_{l_{m+1: t}} p\left(Y_t=y \mid H_m, L_{m+1: t}=l_{m+1: t}, A_{m: t}=g\left(H_{m: t}\right)\right)\\
 \times \prod_{j=m+1}^t p\left(L_j=l_j \mid H_m, L_{m+1: j-1}=l_{m+1: j-1}\right, \left.A_{m, j-1}=g\left(H_m, l_{m+1: j-1}\right)\right).
 \end{aligned}
+$$
 {{< /math >}}
 
+{{< math >}}
+$$
+\begin{aligned}
+    \mathbb{E}\left[ C(i,u) \right] &= \mathbb{E}\left[ C(i,u)\middle| U=u \right] \\
+    &= \mathbb{E}\left[ C(i,U)\middle| U=u \right] \\
+    &= \mathbb{E}\left[ C(i,U(i))\middle| U(i)=u \right] \\
+    &= \mathbb{E}\left[ C(i)\middle| U=u \right].
+\end{aligned}
+$$
+{{< /math >}}
 
 It is not generally possible to compute this integral in closed form, but it could be approximated through Monte-Carlo simulation. We repeat Algorithm $1 M$ times. (There the outcome $Y_t$ is without loss of generality deemed to be a variable in the vector $L_{t+1}$.) At the end of this process, we have $M$ simulated draws of the counterfactual outcome for each time $t=\lbrace m, \ldots, K\rbrace$. For each $t$, the empirical distribution of these draws constitutes a MonteCarlo approximation of the counterfactual outcome distribution (2). The sample averages of the draws at each time $t$ are an estimate of the conditional expectations (1) and can serve as point predictions for $Y_t\left({\bar{A}}_{m-1}, \underline{g_m}\right)$ in a patient with history $H_m$.
 
