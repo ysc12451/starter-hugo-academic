@@ -92,16 +92,6 @@ p\left(Y_t\left(\overline{A_{m-1}}, \underline{g_m}\right)=y | H_m\right)
 $$
 {{< /math >}}
 
-
-{{< math >}}
-$$
-\begin{aligned}
-
-\end{aligned}
-$$
-{{< /math >}}
-
-
 This could be approximated through Monte-Carlo simulation. After simulation, assume now we have $M$ simulated draws of the counterfactual outcome for each time $t=\lbrace m, \ldots, K\rbrace$, then for each $t$, the empirical distribution constitutes a MonteCarlo approximation of the counterfactual outcome distribution. The sample averages at time $t$ are an estimate of the conditional expectations and can serve as point predictions for $Y_t\left(\overline{A_{m-1}}, \underline{g_m}\right)$ in a patient with history $H_m$.
 
 # References
