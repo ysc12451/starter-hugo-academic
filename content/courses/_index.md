@@ -85,24 +85,17 @@ For $t > m$, we need to adjust for time-varying confounding. With $X_{i:j} = X_i
 {{< math >}}
 $$
 \begin{aligned}
-p\left(Y_t\left(\overline{A_{m-1}}, \underline{g_m}\right)=y | H_m\right) 
-\end{aligned}
-$$
-{{< /math >}}
-
-{{< math >}}
-$$
-\begin{aligned}
+p\left(Y_t\left(\overline{A_{m-1}}, \underline{g_m}\right)=y | H_m\right) \\
 =\int_{l_{m+1: t}} p\left(Y_t=y | H_m, L_{m+1: t}=l_{m+1: t}, A_{m: t}=g\left(H_{m: t}\right)\right)
-
 \end{aligned}
 $$
 {{< /math >}}
 
+
 {{< math >}}
 $$
 \begin{aligned}
-\times \prod_{j=m+1}^t p\left(L_j=l_j | H_m, L_{m+1: j-1}=l_{m+1: j-1}\right, \left.A_{m, j-1}=g\left(H_m, l_{m+1: j-1}\right)\right).
+\times \prod_{j=m+1}^t p\left(L_j=l_j | H_m, L_{m+1: j-1}=l_{m+1: j-1}\right, A_{m, j-1}=g\left(H_m, l_{m+1: j-1}\right)\right).
 \end{aligned}
 $$
 {{< /math >}}
