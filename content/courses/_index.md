@@ -135,6 +135,26 @@ The first equation is from causal irrelevance as in the case $t=m$ and the fact 
 
 This could be approximated through Monte-Carlo simulation. After simulation, assume now we have $M$ simulated draws of the counterfactual outcome for each time $t=\lbrace m, \ldots, K\rbrace$, then for each $t$, the empirical distribution constitutes a Monte-Carlo approximation of the counterfactual outcome distribution. The sample averages at time $t$ are an estimate of the conditional expectations and can serve as point predictions for $Y_t\left(\overline{A_{m-1}}, \underline{g_m}\right)$ in a patient with history $H_m$ [(Li et al., 2021)](#1).
 
+# 4 Estimation (HW4)
+
+## 4.1 Algorithm 
+
+{{< math >}}
+$$
+\begin{aligned}
+&\begin{aligned}
+&\hline \text { Algorithm } 1 \text { G-Computation (One simulation) } \\
+&\hline \text { Set } a_m^*=g_m\left(H_m\right) \\
+&\text { Simulate } l_{m+1}^* \text { from } p\left(L_{m+1} \mid H_m, A_m=a_m^*\right) \\
+&\text { Set } a_{m+1}^*=g_m\left(H_m, l_{m+1}^*, a_m^*\right) \\
+&\text { Simulate } l_{m+2}^* \quad \text { from } \quad p\left(L_{m+2} \mid H_m, L_{m+1}=\right. \\
+&\left.l_{m+1}^*, A_m=a_m^*, A_{m+1}=a_{m+1}^*\right)
+\end{aligned}\\
+&\text { Continue simulations through time } K
+\end{aligned}
+$$
+{{< /math >}}
+
 # References
 
 <div id ="1"></div>
