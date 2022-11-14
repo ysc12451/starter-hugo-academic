@@ -179,8 +179,7 @@ $$
 
 The next step is to estimate conditional expectations $E[L_t^j|L_t^0,..., L_t^{j-1}, \overline{L_{t-1}}, \overline{A_{t-1}}]$. Different methods are applied to parametric and non-parametric situation: (1) Under parametric assumption, estimation of the distribution can be done by simply maximizing the likelihood, and sampling methods may vary according to the distribution family. (2) Under non-parametric assumption, estimation can be done by an empirical way: simulate from $L_t^j|L_t^0,..., L_t^{j-1}, \overline{L_{t-1}}, \overline{A_{t-1}}\sim \hat E[L_t^j|L_t^0,..., L_t^{j-1}, \overline{L_{t-1}}, \overline{A_{t-1}}] +\epsilon_t^j$, where $\epsilon_t^j$ is draw from an empirical distribution of $L_t^j-\hat L_t^j$ in a holdout set which has not been used. 
 
-Based on the representation of the history $R_t$, estimates for covariate components can be obtained by the conditional expectations of covariates. To simplify the notation, the conditional expectation of each $L^j_{t+1}, 0 ≤ j < p$ given the representation of patient history can be written down as being estimated by the functions $f^j_t$:
-
+After estimating the conditional expectations, estimates for covariate components can be obtained by the conditional expectations of covariates. To simplify the notation, based on the representation of the history: $R_t$, the conditional expectation of each $L^j_{t+1}, 0 ≤ j < p$ given the representation of patient history can be written down as being estimated by the specialized estimation functions $f^j_t$:
 
 {{< math >}}
 $$
@@ -191,6 +190,10 @@ L_{t+1}^j &= f_t^j(R_t, L_{t+1}^0,..., L_{t+1}^{j-1};\Lambda_j)
 \end{aligned}
 $$
 {{< /math >}}
+
+where $f_t^j, \Lambda_j$ are learnable parameters. Note that The $f^j_t$ might be sequential models (e.g. RNN) or models focused only on the representation at t (e.g. linear models)[(Li et al., 2021)](#1).
+
+In G-Net, [(Li et al., 2021)](#1) uses teacher-forcing by [(Williams and Zipser, 1989)](#7) to learn the parameters $(\Theta, \Lambda)$ for estimating covariates $L_t$. With parameters determined, the distribution of the Monte Carlo simulations produced by the algorithm in 4.1 constitute an estimate of uncertainty about a counterfactual prediction.
 
 
 ![hw4_1](hw4_1.png)
@@ -223,6 +226,11 @@ The G-Net: A flexible sequential deep learning framework for g-computation [(Li 
 <div id ="6"></div>
 
 - [6] [A new approach to causal inference in mortality studies with a sustained exposure period—application to control of the healthy worker survivor effect](https://www.sciencedirect.com/science/article/pii/0270025586900886)
+
+<div id ="7"></div>
+
+- [7] [A Learning Algorithm for Continually Running Fully Recurrent Neural Networks](https://direct.mit.edu/neco/article-abstract/1/2/270/5490/A-Learning-Algorithm-for-Continually-Running-Fully)
+
 
 
 
