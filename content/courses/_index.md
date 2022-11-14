@@ -150,7 +150,7 @@ $$
 &\text { Simulate } l_{m+2}^* \quad \text { from } \quad p\left(L_{m+2} \mid H_m, L_{m+1}=\right. \\
 &\left.l_{m+1}^*, A_m=a_m^*, A_{m+1}=a_{m+1}^*\right)
 \end{aligned}\\
-&\text { Continue simulations through time } K
+&\hline \text { Continue simulations through time } K
 \end{aligned}
 $$
 {{< /math >}}
