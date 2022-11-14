@@ -147,11 +147,9 @@ $$
 &\hline \text { Set } a_m^*=g_m\left(H_m\right) \\
 &\text { Simulate } l_{m+1}^* \text { from } p\left(L_{m+1} \mid H_m, A_m=a_m^*\right) \\
 &\text { Set } a_{m+1}^*=g_m\left(H_m, l_{m+1}^*, a_m^*\right) \\
-&\text { Simulate } l_{m+2}^* \quad \text { from } \quad p\left(L_{m+2} \mid H_m, L_{m+1}=\right. \\
-&\left.l_{m+1}^*, A_m=a_m^*, A_{m+1}=a_{m+1}^*\right)
+&\text { Simulate } l_{m+2}^* \quad \text { from } \quad p\left(L_{m+2} \mid H_m, L_{m+1}=\right.\left.l_{m+1}^*, A_m=a_m^*, A_{m+1}=a_{m+1}^*\right)
 \end{aligned}\\
-&\text { Continue simulations through time } K
-&\hline
+&\text { Continue simulations through time } K \\
 \end{aligned}
 $$
 {{< /math >}}
