@@ -139,6 +139,12 @@ This could be approximated through Monte-Carlo simulation. After simulation, ass
 
 ## 4.1 Algorithm 
 
+An important step in the g-computation algorithm is to simulate $p(L_t|\overline{L_{t-1}}, \overline{A_{t-1}})$ of the covariates from joint conditional distributions given history at time t. In practice, this needs to be estimated from data since we do not have the true conditional distributions. G-Net is proposed by [(Li et al., 2021)](#1) for this task.
+
+![hw4_1](hw4_1.png)
+
+The G-Net: A flexible sequential deep learning framework for g-computation [(Li et al., 2021)](#1)
+
 {{< math >}}
 $$
 \begin{aligned}
