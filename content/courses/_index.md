@@ -179,6 +179,18 @@ $$
 
 The next step is to estimate conditional expectations $E[L_t^j|L_t^0,..., L_t^{j-1}, \overline{L_{t-1}}, \overline{A_{t-1}}]$. Different methods are applied to parametric and non-parametric situation: (1) Under parametric assumption, estimation of the distribution can be done by simply maximizing the likelihood, and sampling methods may vary according to the distribution family. (2) Under non-parametric assumption, estimation can be done by an empirical way: simulate from $L_t^j|L_t^0,..., L_t^{j-1}, \overline{L_{t-1}}, \overline{A_{t-1}}\sim \hat E[L_t^j|L_t^0,..., L_t^{j-1}, \overline{L_{t-1}}, \overline{A_{t-1}}] +\epsilon_t^j$, where $\epsilon_t^j$ is draw from an empirical distribution of $L_t^j-\hat L_t^j$ in a holdout set which has not been used. 
 
+Based on the representation of the history $R_t$, estimates for covariate components can be obtained by the conditional expectations of covariates. To simplify the notation, the conditional expectation of each $L^j_{t+1}, 0 ≤ j < p$ given the representation of patient history can be written down as being estimated by the functions $f^j_t$:
+
+
+{{< math >}}
+$$
+\begin{aligned}
+L_{t+1}^0 &= f_t^0(R_t;\Lambda_0)\\
+... &\\
+L_{t+1}^j &= f_t^j(R_t, L_{t+1}^0,..., L_{t+1}^{j-1};\Lambda_j)
+\end{aligned}
+$$
+{{< /math >}}
 
 
 ![hw4_1](hw4_1.png)
