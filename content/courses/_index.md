@@ -54,6 +54,9 @@ The goal for this problem is to predict patient outcomes under various future tr
 - $\overline{X_t}, \underline{X_t}$: are respectively history and future of a time-varying variable $X$
 - $H_t=(\overline{L_t}, \overline{A_{t-1}})$: the patient history at but before time $t$
 - $g=\lbrace g_0,...,g_K\rbrace $: dynamic treatment strategy, a collection of decision functions that map $H_t$ onto a treatment action at time $t$
+- $R_t=r_t(\overline{L_t}, \overline{A_t}; \Theta)$: a representation of the history
+- $r_t$: the transformation function for the history, learned by sequential learning architectures
+- $\Theta$: model parameters learned during training
 
 Therefore, $Y_t(g)$ is the counterfactual outcome observed at time $t$ had, possibly contrary to fact, given that treatment strategy $g$ been followed from baseline [(Robins, 1986)](#6). Let $Y_t(\overline{A_{m-1}}, \underline{g_m}), t>m$ denote the counterfactual outcome that would be observed if patient had received their observed treatments $\overline{A_{m-1}}$ up to time $m-1$ then followed strategy $g$ starting from time $m$. Here $g$ can be regarded as the experts.
 
@@ -162,21 +165,25 @@ Note that in the following discussion, $Y_t$ are regarded as one of the covariat
 
 An important step in the g-computation algorithm is to simulate $p(L_t|\overline{L_{t-1}}, \overline{A_{t-1}})$ of the covariates from joint conditional distributions given history at time t. In practice, this needs to be estimated from data since we do not have the true conditional distributions. Generalized linear regression models are always used to estimate the conditional distributions of the covariates, while these models are in lack of the ability to capture temporal dependencies embedded in the patient data. G-Net is proposed by [(Li et al., 2021)](#1) for this task.
 
-![hw4_1](hw4_1.png)
-
-The G-Net: A flexible sequential deep learning framework for g-computation [(Li et al., 2021)](#1)
-
-G-Net framework makes use of sequential deep learning models to estimate conditional distributions $p(L_t|\overline{L_{t-1}}, \overline{A_{t-1}})$ and then simulate variables under treatment strategies $g$. In practice, G-Net divides the components of the covariates into several batches since customizing individual simulation models for components may often perform better and be easy to implement. To be specific, denote $L_t^0,..., L_t^{p-1}$ be the $p$ components of $L_t$ by an arbitrary preceding order. For each simulation, there is the basic probability identity [(Li et al., 2021)](#1):
+G-Net framework makes use of sequential deep learning models to estimate conditional distributions $p(L_t|\overline{L_{t-1}}, \overline{A_{t-1}})$ and then simulate variables under treatment strategies $g$. In practice, G-Net divides the components of the covariates into several batches since customizing individual simulation models for components may often perform better and be easy to implement. To be specific, denote $L_t^0,..., L_t^{p-1}$ be the $p$ components of $L_t$ by an arbitrary preceding order. For each simulation, there is the basic probability identity [(Li et al., 2021)](#1), from which G-Net will simulate the left hand side probability by simulating each $L_t^j$ on the right hand side by the given order:
 
 {{< math >}}
 $$
 \begin{aligned}
-p(L_t|\overline{L_{t-1}}, \overline{A_{t-1}}) = p(L_t^0|\overline{L_{t-1}}, \overline{A_{t-1}}) \times p(L_t^1|L_t^0, \overline{L_{t-1}}, \overline{A_{t-1}}) \times ... \times p(L_t^{p-1}|L_t^0,..., L_t^{p-2}, \overline{L_{t-1}}, \overline{A_{t-1}})
+p(L_t|\overline{L_{t-1}}, \overline{A_{t-1}}) 
+&= p(L_t^0|\overline{L_{t-1}}, \overline{A_{t-1}}) \times p(L_t^1|L_t^0, \overline{L_{t-1}}, \overline{A_{t-1}}) \\
+& \times ... \times p(L_t^{p-1}|L_t^0,..., L_t^{p-2}, \overline{L_{t-1}}, \overline{A_{t-1}})
 \end{aligned}
 $$
 {{< /math >}}
 
+The next step is to estimate conditional expectations $E[L_t^j|L_t^0,..., L_t^{j-1}, \overline{L_{t-1}}, \overline{A_{t-1}}]$. Different methods are applied to parametric and non-parametric situation: (1) Under parametric assumption, estimation of the distribution can be done by simply maximizing the likelihood, and sampling methods may vary according to the distribution family. (2) Under non-parametric assumption, estimation can be done by an empirical way: simulate from $L_t^j|L_t^0,..., L_t^{j-1}, \overline{L_{t-1}}, \overline{A_{t-1}}\sim \hat E[L_t^j|L_t^0,..., L_t^{j-1}, \overline{L_{t-1}}, \overline{A_{t-1}}] +\epsilon_t^j$, where $\epsilon_t^j$ is draw from an empirical distribution of $L_t^j-\hat L_t^j$ in a holdout set which has not been used. 
 
+
+
+![hw4_1](hw4_1.png)
+
+The G-Net: A flexible sequential deep learning framework for g-computation [(Li et al., 2021)](#1)
 
 
 # References
