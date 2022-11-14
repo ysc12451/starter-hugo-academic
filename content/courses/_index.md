@@ -139,11 +139,7 @@ This could be approximated through Monte-Carlo simulation. After simulation, ass
 
 ## 4.1 Algorithm 
 
-An important step in the g-computation algorithm is to simulate $p(L_t|\overline{L_{t-1}}, \overline{A_{t-1}})$ of the covariates from joint conditional distributions given history at time t. In practice, this needs to be estimated from data since we do not have the true conditional distributions. G-Net is proposed by [(Li et al., 2021)](#1) for this task.
-
-![hw4_1](hw4_1.png)
-
-The G-Net: A flexible sequential deep learning framework for g-computation [(Li et al., 2021)](#1)
+The estimation is delevoped under the general g-computation algorithm, described as following:
 
 {{< math >}}
 $$
@@ -159,6 +155,29 @@ $$
 \end{aligned}
 $$
 {{< /math >}}
+
+Note that in the following discussion, $Y_t$ are regarded as one of the covariates in $L$.
+
+## 4.2 G-Net
+
+An important step in the g-computation algorithm is to simulate $p(L_t|\overline{L_{t-1}}, \overline{A_{t-1}})$ of the covariates from joint conditional distributions given history at time t. In practice, this needs to be estimated from data since we do not have the true conditional distributions. Generalized linear regression models are always used to estimate the conditional distributions of the covariates, while these models are in lack of the ability to capture temporal dependencies embedded in the patient data. G-Net is proposed by [(Li et al., 2021)](#1) for this task.
+
+![hw4_1](hw4_1.png)
+
+The G-Net: A flexible sequential deep learning framework for g-computation [(Li et al., 2021)](#1)
+
+G-Net framework makes use of sequential deep learning models to estimate conditional distributions $p(L_t|\overline{L_{t-1}}, \overline{A_{t-1}})$ and then simulate variables under treatment strategies $g$. In practice, G-Net divides the components of the covariates into several batches since customizing individual simulation models for components may often perform better and be easy to implement. To be specific, denote $L_t^0,..., L_t^{p-1}$ be the $p$ components of $L_t$ by an arbitrary preceding order. For each simulation, there is the basic probability identity [(Li et al., 2021)](#1):
+
+{{< math >}}
+$$
+\begin{aligned}
+p(L_t|\overline{L_{t-1}}, \overline{A_{t-1}}) = p(L_t^0|\overline{L_{t-1}}, \overline{A_{t-1}}) \times p(L_t^1|L_t^0, \overline{L_{t-1}}, \overline{A_{t-1}}) \times ... \times p(L_t^{p-1}|L_t^0,..., L_t^{p-2}, \overline{L_{t-1}}, \overline{A_{t-1}})
+\end{aligned}
+$$
+{{< /math >}}
+
+
+
 
 # References
 
