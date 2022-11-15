@@ -135,12 +135,11 @@ $$
 
 The first equation is from causal irrelevance as in the case $t=m$ and the fact that $\underline{g_m}=(g_m, g_{m+1}$ as $t=m+1$. The second one is by g-formula and similar to the case $t=m$, except for adding a $L_{m+1}$ because the condition $H_m$ does not contain it. The third one is the expension for $L_{m+1}$ by conditional probability and integral. The last one is because $L_m$ is within $H_m$. $\Box$
 
-
 This could be approximated through Monte-Carlo simulation. After simulation, assume now we have $M$ simulated draws of the counterfactual outcome for each time $t=\lbrace m, \ldots, K\rbrace$, then for each $t$, the empirical distribution constitutes a Monte-Carlo approximation of the counterfactual outcome distribution. The sample averages at time $t$ are an estimate of the conditional expectations and can serve as point predictions for $Y_t\left(\overline{A_{m-1}}, \underline{g_m}\right)$ in a patient with history $H_m$ [(Li et al., 2021)](#1).
 
 # 4 Estimation (HW4)
 
-## 4.1 Algorithm 
+## 4.1 G-computation algorithm 
 
 The estimation is delevoped under the general g-computation algorithm, described as following:
 
@@ -163,9 +162,9 @@ Note that in the following discussion, $Y_t$ are regarded as one of the covariat
 
 ## 4.2 G-Net
 
-An important step in the g-computation algorithm is to simulate $p(L_t|\overline{L_{t-1}}, \overline{A_{t-1}})$ of the covariates from joint conditional distributions given history at time t. In practice, this needs to be estimated from data since we do not have the true conditional distributions. Generalized linear regression models are always used to estimate the conditional distributions of the covariates, while these models are in lack of the ability to capture temporal dependencies embedded in the patient data. G-Net is proposed by [(Li et al., 2021)](#1) for this task.
+An important step in the g-computation algorithm is to simulate $p(L_t|\overline{L_{t-1}}, \overline{A_{t-1}})$ of the covariates from joint conditional distributions given history at time $t$. In practice, this needs to be estimated from data since we do not have the true conditional distributions. Generalized linear regression models are always used to estimate the conditional distributions of the covariates, while these models are in lack of the ability to capture temporal dependencies embedded in data. G-Net is proposed by [(Li et al., 2021)](#1) for this task.
 
-G-Net framework makes use of sequential deep learning models to estimate conditional distributions $p(L_t|\overline{L_{t-1}}, \overline{A_{t-1}})$ and then simulate variables under treatment strategies $g$. In practice, G-Net divides the components of the covariates into several batches since customizing individual simulation models for components may often perform better and be easy to implement. To be specific, denote $L_t^0,..., L_t^{p-1}$ be the $p$ components of $L_t$ by an arbitrary preceding order. For each simulation, there is the basic probability identity [(Li et al., 2021)](#1), from which G-Net will simulate the left hand side probability by simulating each $L_t^j$ on the right hand side by the given order:
+G-Net framework makes use of sequential deep learning models to estimate conditional distributions $p(L_t|\overline{L_{t-1}}, \overline{A_{t-1}})$ and then simulate variables under treatment strategies $g$. In practice, G-Net divides the components of the covariates into several batches since customizing individual simulation models for components may often perform better and be easy to implement. To be specific, denote $L_t^0,..., L_t^{p-1}$ be the $p$ batches of $L_t$ by an arbitrary preceding order. For each simulation, there is the basic probability identity [(Li et al., 2021)](#1), from which G-Net will simulate the left hand side probability by simulating each $L_t^j$ on the right hand side by the given order:
 
 {{< math >}}
 $$
@@ -177,9 +176,11 @@ p(L_t|\overline{L_{t-1}}, \overline{A_{t-1}})
 $$
 {{< /math >}}
 
-The next step is to estimate conditional expectations $E[L_t^j|L_t^0,..., L_t^{j-1}, \overline{L_{t-1}}, \overline{A_{t-1}}]$. Different methods are applied to parametric and non-parametric situation: (1) Under parametric assumption, estimation of the distribution can be done by simply maximizing the likelihood, and sampling methods may vary according to the distribution family. (2) Under non-parametric assumption, estimation can be done by an empirical way: simulate from $L_t^j|L_t^0,..., L_t^{j-1}, \overline{L_{t-1}}, \overline{A_{t-1}}\sim \hat E[L_t^j|L_t^0,..., L_t^{j-1}, \overline{L_{t-1}}, \overline{A_{t-1}}] +\epsilon_t^j$, where $\epsilon_t^j$ is draw from an empirical distribution of $L_t^j-\hat L_t^j$ in a holdout set which has not been used. 
+The next step is to estimate conditional expectations $E[L_t^j|L_t^0,..., L_t^{j-1}, \overline{L_{t-1}}, \overline{A_{t-1}}]$. Different methods are applied to parametric or non-parametric situation:
+- Under parametric assumption, estimation of the distribution can be done by simply maximizing the likelihood, and sampling methods may vary according to the distribution family. 
+- Under non-parametric assumption, estimation can be done by an empirical way: simulate from $L_t^j|L_t^0,..., L_t^{j-1}, \overline{L_{t-1}}, \overline{A_{t-1}}\sim \hat E[L_t^j|L_t^0,..., L_t^{j-1}, \overline{L_{t-1}}, \overline{A_{t-1}}] +\epsilon_t^j$, where $\epsilon_t^j$ is draw from an empirical distribution of $L_t^j-\hat L_t^j$ in a holdout set which has not been used. 
 
-After estimating the conditional expectations, estimates for covariate components can be obtained by the conditional expectations of covariates. To simplify the notation, based on the representation of the history: $R_t$, the conditional expectation of each $L^j_{t+1}, 0 ≤ j < p$ given the representation of patient history can be written down as being estimated by the specialized estimation functions $f^j_t$:
+After estimating the conditional expectations, estimates for covariate components can be obtained by the conditional expectations of covariates. To simplify the notation, based on the representation of the history: $R_t$, the conditional expectation of each $L^j_{t+1}, 0 ≤ j < p$ can be denoted as being estimated by the specialized estimation functions $f^j_t$:
 
 {{< math >}}
 $$
@@ -193,13 +194,19 @@ $$
 
 where $f_t^j, \Lambda_j$ are learnable parameters. Note that The $f^j_t$ might be sequential models (e.g. RNN) or models focused only on the representation at t (e.g. linear models)[(Li et al., 2021)](#1).
 
-In G-Net, [(Li et al., 2021)](#1) uses teacher-forcing by [(Williams and Zipser, 1989)](#7) to learn the parameters $(\Theta, \Lambda)$ for estimating covariates $L_t$. With parameters determined, the distribution of the Monte Carlo simulations produced by the algorithm in 4.1 constitute an estimate of uncertainty about a counterfactual prediction.
-
+In G-Net, [(Li et al., 2021)](#1) uses teacher-forcing by [(Williams and Zipser, 1989)](#7) to learn the parameters $(\Theta, \Lambda)$ for estimating covariates $L_t$. With parameters determined, the distribution of the Monte Carlo simulations produced by the algorithm in 4.1 constitute an estimate of uncertainty about a counterfactual prediction. The whole process is depicted as following:
 
 ![hw4_1](hw4_1.png)
 
 The G-Net: A flexible sequential deep learning framework for g-computation [(Li et al., 2021)](#1)
 
+# 5 Implementation (HW4)
+
+# 6 Discussion (HW4)
+
+- While using flexible regression models, we should be careful about extrapolating to counterfactual treatment strategies too far afield from what appears in the data. 
+- G-Net is not expected to outperform alternatives when there are no nonlinear or long term dependencies in the data
+- The estimate for a counterfactual prediction by G-Net ignores uncertainty about the G-Net parameter estimates themselves, which may be approximated by fitting a Bayesian model.
 
 # References
 
