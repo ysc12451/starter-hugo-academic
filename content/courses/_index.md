@@ -237,9 +237,13 @@ Although usual sensitivity analysis: Manski's, Rosenbaum's, and VanderWeele's ap
 
 Recall the assumptions for the G-Net are:
 
-1. Consistency: $\overline{Y_K}(\overline{A_K}) = \overline{Y_K}$. This means the observed outcome is equal to the counterfactual outcome corresponding to the observed treatment.
-2. Sequential Exchangeability: $\underline{Y_t}(g) \perp A_t|H_t, \forall t$. This means all confounding are observed. This would hold, e.g., if all drivers of treatment decisions that were prognostic for the outcome were observed.
-3. Positivity: $P(A_t = g_t(H_t)) > 0, \forall \lbrace H_t:P(H_t) > 0\rbrace$. This means the counterfactual treatment strategy of interest has some non-zero probability of actually being followed. Positivity is not strictly necessary.
+1. Consistency: $\overline{Y_K}(\overline{A_K}) = \overline{Y_K}$. This means the observed outcome is equal to the counterfactual outcome corresponding to the observed treatment. This assumption is not simply an assumption, but also a contrain on the algothm. The algorithm must generate the same results as those used as the training data.
+
+2. Sequential Exchangeability: $\underline{Y_t}(g) \perp A_t|H_t, \forall t$. This means all confounding are observed. This would hold if all drivers of treatment decisions that were prognostic for the outcome were observed. This is the key assumption that should be reconsidered in the sensitivity analysis.
+
+3. Positivity: $P(A_t = g_t(H_t)) > 0, \forall \lbrace H_t:P(H_t) > 0\rbrace$. This means the counterfactual treatment strategy of interest has some non-zero probability of actually being followed. Positivity is not strictly necessary. This assumption is regular assumption that needs not to be considered in the sensitivity analysis.
+
+## 6.2 Sensitivity investigation
 
 # References
 
