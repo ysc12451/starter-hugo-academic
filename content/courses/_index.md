@@ -255,6 +255,10 @@ Because G-Net is combining classical causal estimation and deep learning network
 
 3. Calculating E-values: This is also feasible after we run G-Net on a certain dataset. At all time $t$, we can calculate $E=RR_{AY}^{obs}+\sqrt{RR_{AY}^{obs}(RR_{AY}^{obs}-1)}$ where $RR_{AY}^{obs}=\frac{E[Y|A=1]}{E[Y|A=0]}$. tells us how much the unmeasured confounder must bias treatment assignments or the outcome to explain away the observed association between $A$ and $Y$.
 
+# 7 Conclusion Remarks
+
+In summary, in this project, I studied G-Net by [(Li et al., 2021)](#1), a method which estimates the effects of general dynamic treatment strategies conditioned on historical data with a generalized problem setting for patient outcomes under time-varying treatment strategies based on observed patient behaviors. By the pipeline of conducting analysis in causal inference, I used what I learned in class to study and analyze its components, such as assumption, identification, estimation, and sensitivity analysis. What I obtained from this project is to make use of the analytical tools in understanding a method. Unfortunately, what I haven't tried is running this method on real data due to the difficulty in using the code of the method and the data. But I still considered several potential problems I may meet and the solution suggested by course material. Although the distribution of the Monte Carlo simulations produced by G-computation forms an estimate of uncertainty about a counterfactual prediction, it ignores uncertainty about the G-Net parameter estimates themselves. Fitting a Bayesian model before Monte Carlo simulation may be helpful to this [(Li et al., 2021)](#1). This work is expected to contribute to informing sequential treatment decision making in a critical care setting.
+
 # References
 
 <div id ="1"></div>
