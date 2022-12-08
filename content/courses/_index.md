@@ -229,6 +229,18 @@ There are a total of 12000 simulated trajectories generated from CVSim in $D_o$ 
 - G-Net is not expected to outperform alternatives when there are no nonlinear or long term dependencies in the data
 - The estimate for a counterfactual prediction by G-Net ignores uncertainty about the G-Net parameter estimates themselves, which may be approximated by fitting a Bayesian model.
 
+# 6 Sensitivity Analysis (HW5)
+
+Although usual sensitivity analysis: Manski's, Rosenbaum's, and VanderWeele's approaches were learned in class, this G-Net method is not typically an object to apply sensitivity analysis.
+
+## 6.1 Assumptions review
+
+Recall the assumptions for the G-Net are:
+
+1. Consistency: $\overline{Y_K}(A_K) = \overline{Y_K}$. This means the observed outcome is equal to the counterfactual outcome corresponding to the observed treatment.
+2. Sequential Exchangeability: $\underline{Y_t}(g) \perp A_t|H_t, \forall t$. This means all confounding are observed. This would hold, e.g., if all drivers of treatment decisions that were prognostic for the outcome were observed.
+3. Positivity: $P(A_t = g_t(H_t)) > 0, \forall \lbrace H_t:P(H_t) > 0\rbrace$. This means the counterfactual treatment strategy of interest has some non-zero probability of actually being followed. Positivity is not strictly necessary.
+
 # References
 
 <div id ="1"></div>
