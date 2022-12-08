@@ -15,6 +15,8 @@ header:
 ---
 Please note that the main topic studied in this project is not about identifying a causal estimand in a specific problem, but more about one kind of methods estimating effects for time-varying treatment strategies with causal relationship.
 
+Technique notice: Sometimes this webpage will miss some overline and underline by latex.
+
 # 1 Motivation (HW2)
 
 Many real-world causal inference applications require us to study the effects of treatments along time, i.e., dynamic treatment. In healthcare applications, physicians apply several treatments over time, such as different drug dosage levels, types of exercise, and amount of exercise, to achieve some clinical outcomes [(Liu et al., 2020)](#2). As the action progresses, the patient's status changes accordingly. 
@@ -237,13 +239,21 @@ Although usual sensitivity analysis: Manski's, Rosenbaum's, and VanderWeele's ap
 
 Recall the assumptions for the G-Net are:
 
-1. Consistency: $\overline{Y_K}(\overline{A_K}) = \overline{Y_K}$. This means the observed outcome is equal to the counterfactual outcome corresponding to the observed treatment. This assumption is not simply an assumption, but also a contrain on the algothm. The algorithm must generate the same results as those used as the training data.
+1. Consistency: $\overline{Y_K}(\overline{A_K}) = \overline{Y_K}$. This means the observed outcome is equal to the counterfactual outcome corresponding to the observed treatment. This assumption is not simply an assumption, but also a contrain on the algothm, which requires the algorithm to generate the same results as those used as the training data. So if this is violated, the algorithm has to be stopped and refined.
 
-2. Sequential Exchangeability: $\underline{Y_t}(g) \perp A_t|H_t, \forall t$. This means all confounding are observed. This would hold if all drivers of treatment decisions that were prognostic for the outcome were observed. This is the key assumption that should be reconsidered in the sensitivity analysis.
+2. Sequential Exchangeability: $\underline{Y_t}(g) \perp A_t|H_t, \forall t$. This means all confounding are observed. This would hold if all drivers of treatment decisions that were prognostic for the outcome were observed. This is the key assumption that should be reconsidered in the sensitivity analysis. If this is violated, it means there is still unmeasured confounding beyond our covariates in the model. 
 
 3. Positivity: $P(A_t = g_t(H_t)) > 0, \forall \lbrace H_t:P(H_t) > 0\rbrace$. This means the counterfactual treatment strategy of interest has some non-zero probability of actually being followed. Positivity is not strictly necessary. This assumption is regular assumption that needs not to be considered in the sensitivity analysis.
 
-## 6.2 Sensitivity investigation
+## 6.2 Sensitivity investigation and solution
+
+Because G-Net is combining classical causal estimation and deep learning network, it is a little bit tricky to discuss the general sensitivity analysis methods. Let's discuss several potential methods.
+
+1. Controlling additional variables: If we focus on the assumption "sequential exchangeablity" which assumes all confounding are observed, we may find this is a very strong assumption but can be easily adjusted by the design of G-Net, though not entirely eliminated. To solve this, one way is to add or control more variables as co-variates $L$, which is also encouraged by the implementation of deep learning framework. Recall that in the analysis, we put the covariates and outputs together into one vector to be estimated. Actually, in practice, G-Net typically takes many accessible co-variates into the model and chooses several ones of interest to be output $Y$. For example, [(Li et al., 2021)](#1) considers CVSim, which is an open-source cardiovascular simulator available at PhysioNet. In this problem, they first use 6 coviarates (Total Blood Volume, Nominal Heart Rate, and so on), then 25 covariates, and 29 finally. This means the feasibility by adding more variables into the model.
+
+2. Adding a nonlinear term: This is one advantages of G-Net by design. By introducing neural network in estimation, G-Net enhances its capacity to capture complicated temporal and nonlinear causal structures.
+
+3. Calculating E-values: This is also feasible after we run G-Net on a certain dataset. At all time $t$, we can calculate $E=RR_{AY}^{obs}+\sqrt{RR_{AY}^{obs}(RR_{AY}^{obs}-1)}$ where $RR_{AY}^{obs}=\frac{E[Y|A=1]}{E[Y|A=0]}$. tells us how much the unmeasured confounder must bias treatment assignments or the outcome to explain away the observed association between $A$ and $Y$.
 
 # References
 
